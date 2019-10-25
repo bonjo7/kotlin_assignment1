@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">BernardThompson_Assignment1</string>
+    <string name="app_name">Archaeological Fieldwork</string>
+    <string name="Loading">Loading...</string>
 </resources>
