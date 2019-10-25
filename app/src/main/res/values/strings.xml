@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Archaeological Fieldwork</string>
     <string name="Loading">Loading...</string>
+    <string name="button_addRingfort">Add Ringfort</string>
+    <string name="ringfortName">Ringfort Name</string>
+    <string name="addRingfort">Add Ringfort</string>
+    <string name="ringfortDescription">Ringfort Description</string>
 </resources>
