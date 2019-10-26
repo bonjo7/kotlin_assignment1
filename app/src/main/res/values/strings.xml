@@ -5,4 +5,10 @@
     <string name="ringfortName">Ringfort Name</string>
     <string name="addRingfort">Add Ringfort</string>
     <string name="ringfortDescription">Ringfort Description</string>
+    <string name="menu_addRingfort">Add</string>
+    <string name="menu_cancelRingfort">Cancel</string>
+    <string name="title_activity_test">test</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
