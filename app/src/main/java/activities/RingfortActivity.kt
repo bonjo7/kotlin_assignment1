@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.bernardthompson_assignment1.R
 import helpers.readImage
+import helpers.readImageFromPath
 import helpers.showImagePicker
 import kotlinx.android.synthetic.main.activity_ringfort.*
 import main.MainApp
@@ -39,6 +40,7 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
             ringfort = intent.extras?.getParcelable<RingfortModel>("ringfort_edit")!!
             ringfortName.setText(ringfort.name)
             ringfortDescription.setText(ringfort.description)
+            ringfortImage.setImageBitmap(readImageFromPath(this, ringfort.image))
             btnAdd.setText(R.string.save_ringfort)
             btnAdd.setBackgroundColor(getColor(R.color.orange))
         }
