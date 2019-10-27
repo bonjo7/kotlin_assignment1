@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.example.bernardthompson_assignment1.R
+import com.example.bernardthompson_assignment1.RingfortMapsActivity
 import helpers.readImage
 import helpers.readImageFromPath
 import helpers.showImagePicker
@@ -15,6 +16,7 @@ import main.MainApp
 import models.RingfortModel
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 
 
@@ -75,6 +77,10 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
 
         ringfortLocation.setOnClickListener {
             info ("Set Location Pressed")
+        }
+
+        ringfortLocation.setOnClickListener {
+            startActivity (intentFor<RingfortMapsActivity>())
         }
     }
 
