@@ -41,6 +41,10 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
             ringfortName.setText(ringfort.name)
             ringfortDescription.setText(ringfort.description)
             ringfortImage.setImageBitmap(readImageFromPath(this, ringfort.image))
+            if(ringfort.image != null){
+                chooseImage.setText(R.string.change_ringfort_image)
+                chooseImage.setBackgroundColor(getColor(R.color.orange))
+            }
             btnAdd.setText(R.string.save_ringfort)
             btnAdd.setBackgroundColor(getColor(R.color.orange))
         }
@@ -91,6 +95,7 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
                 if (data != null) {
                     ringfort.image = data.getData().toString()
                     ringfortImage.setImageBitmap(readImage(this, resultCode, data))
+                    chooseImage.setText(R.string.change_ringfort_image)
                 }
             }
         }
