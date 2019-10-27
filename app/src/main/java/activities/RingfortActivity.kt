@@ -57,6 +57,10 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
                 finish()
             }
         }
+
+        chooseImage.setOnClickListener {
+            info ("Select image")
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
