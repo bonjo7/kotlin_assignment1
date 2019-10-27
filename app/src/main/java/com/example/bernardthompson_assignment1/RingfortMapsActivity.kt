@@ -1,5 +1,7 @@
 package com.example.bernardthompson_assignment1
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -8,10 +10,11 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import models.Location
 
-class RingfortMapsActivity : AppCompatActivity(), OnMapReadyCallback {
+class RingfortMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
 
     private lateinit var mMap: GoogleMap
     var location = Location()
@@ -28,6 +31,8 @@ class RingfortMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        mMap.setOnMarkerDragListener(this)
+        mMap.setOnMarkerClickListener(this)
         val loc = LatLng(location.lat, location.lng)
         val waterford = LatLng(52.2593, -7.1101)
         val options = MarkerOptions()
@@ -37,5 +42,31 @@ class RingfortMapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .position(loc)
         mMap.addMarker(options)
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(waterford, 16f))
+    }
+
+    override fun onMarkerClick(marker: Marker): Boolean {
+        val loc = LatLng(location.lat, location.lng)
+        marker.setSnippet("GPS : " + loc.toString())
+        return false
+    }
+
+    override fun onMarkerDragStart(marker: Marker) {
+    }
+
+    override fun onMarkerDrag(marker: Marker) {
+    }
+
+    override fun onMarkerDragEnd(marker: Marker) {
+        location.lat = marker.position.latitude
+        location.lng = marker.position.longitude
+        location.zoom = mMap.cameraPosition.zoom
+    }
+
+    override fun onBackPressed() {
+        val resultIntent = Intent()
+        resultIntent.putExtra("location", location)
+        setResult(Activity.RESULT_OK, resultIntent)
+        finish()
+        super.onBackPressed()
     }
 }

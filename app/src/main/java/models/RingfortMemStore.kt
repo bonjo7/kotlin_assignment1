@@ -29,6 +29,9 @@ class RingfortMemStore : RingfortStore, AnkoLogger {
             foundRingfort.name = ringfort.name
             foundRingfort.description = ringfort.description
             foundRingfort.image = ringfort.image
+            foundRingfort.lat = ringfort.lat
+            foundRingfort.lng = ringfort.lng
+            foundRingfort.zoom = ringfort.zoom
         }
     }
 

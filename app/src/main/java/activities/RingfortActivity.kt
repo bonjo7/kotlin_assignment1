@@ -27,6 +27,7 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
     var ringfort = RingfortModel()
     lateinit var app: MainApp
     val IMAGE_REQUEST = 1
+    val LOCATION_REQUEST = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,7 +83,12 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
         }
 
         ringfortLocation.setOnClickListener {
-            val location = Location(52.2593, -7.1101)
+            val location = Location(52.2593, -7.1101, 15f)
+            if(ringfort.zoom != 0f){
+                location.lat = ringfort.lat
+                location.lng = ringfort.lng
+                location.zoom = ringfort.zoom
+            }
             startActivity (intentFor<RingfortMapsActivity>().putExtra("location", location))
         }
     }
@@ -109,6 +115,14 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
                     ringfort.image = data.getData().toString()
                     ringfortImage.setImageBitmap(readImage(this, resultCode, data))
                     chooseImage.setText(R.string.change_ringfort_image)
+                }
+            }
+            LOCATION_REQUEST -> {
+                if (data != null) {
+                    val location = data.extras?.getParcelable<Location>("location")!!
+                    ringfort.lat = location.lat
+                    ringfort.lng = location.lng
+                    ringfort.zoom = location.zoom
                 }
             }
         }
