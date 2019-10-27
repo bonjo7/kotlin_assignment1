@@ -3,7 +3,14 @@ package models
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
+var lastId = 0L
+
+internal fun getId(): Long {
+    return lastId++
+}
+
 class RingfortMemStore : RingfortStore, AnkoLogger {
+
     val ringforts = ArrayList<RingfortModel>()
 
     override fun findAll(): List<RingfortModel> {
@@ -11,8 +18,9 @@ class RingfortMemStore : RingfortStore, AnkoLogger {
     }
 
     override fun create(ringfort: RingfortModel) {
+        ringfort.id = getId()
         ringforts.add(ringfort)
-        logAll();
+        logAll()
     }
 
     override fun update(ringfort: RingfortModel) {
@@ -20,7 +28,6 @@ class RingfortMemStore : RingfortStore, AnkoLogger {
         if(foundRingfort != null) {
             foundRingfort.name = ringfort.name
             foundRingfort.description = ringfort.description
-            logAll()
         }
     }
 

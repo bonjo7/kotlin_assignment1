@@ -12,12 +12,13 @@ interface RingfortListener {
     fun onRingfortClick(ringfort: RingfortModel)
 }
 
-class RingfortAdapter constructor(private var ringforts: List<RingfortModel>, private val listener : RingfortListener) :
-    RecyclerView.Adapter<RingfortAdapter.MainHolder>() {
+class RingfortAdapter constructor(private var ringforts: List<RingfortModel>,
+                                  private val listener : RingfortListener) :
+                                    RecyclerView.Adapter<RingfortAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
-            LayoutInflater.from(parent.context).inflate(
+            LayoutInflater.from(parent?.context).inflate(
                 R.layout.card_ringfort,
                 parent,
                 false
