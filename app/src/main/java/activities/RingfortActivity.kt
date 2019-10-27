@@ -8,11 +8,13 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.bernardthompson_assignment1.R
 import com.example.bernardthompson_assignment1.RingfortMapsActivity
+import com.google.android.gms.maps.model.LatLng
 import helpers.readImage
 import helpers.readImageFromPath
 import helpers.showImagePicker
 import kotlinx.android.synthetic.main.activity_ringfort.*
 import main.MainApp
+import models.Location
 import models.RingfortModel
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -80,7 +82,8 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
         }
 
         ringfortLocation.setOnClickListener {
-            startActivity (intentFor<RingfortMapsActivity>())
+            val location = Location(52.2593, -7.1101)
+            startActivity (intentFor<RingfortMapsActivity>().putExtra("location", location))
         }
     }
 
