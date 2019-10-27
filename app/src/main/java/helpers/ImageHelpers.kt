@@ -2,7 +2,10 @@ package helpers
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.provider.MediaStore
 import com.example.bernardthompson_assignment1.R
+import java.io.IOException
 
 
 fun showImagePicker(parent: Activity, id: Int) {
@@ -12,4 +15,16 @@ fun showImagePicker(parent: Activity, id: Int) {
     intent.addCategory(Intent.CATEGORY_OPENABLE)
     val chooser = Intent.createChooser(intent, R.string.select_ringfort_image.toString())
     parent.startActivityForResult(chooser, id)
+}
+
+fun readImage(activity: Activity, resultCode: Int, data: Intent?): Bitmap? {
+    var bitmap: Bitmap? = null
+    if (resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+        try {
+            bitmap = MediaStore.Images.Media.getBitmap(activity.contentResolver, data.data)
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+    return bitmap
 }

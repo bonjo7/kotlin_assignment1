@@ -1,11 +1,14 @@
 package activities
 
 import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.example.bernardthompson_assignment1.R
+import helpers.readImage
+import helpers.showImagePicker
 import kotlinx.android.synthetic.main.activity_ringfort.*
 import main.MainApp
 import models.RingfortModel
@@ -18,6 +21,7 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
 
     var ringfort = RingfortModel()
     lateinit var app: MainApp
+    val IMAGE_REQUEST = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +63,7 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
         }
 
         chooseImage.setOnClickListener {
+            showImagePicker(this, IMAGE_REQUEST)
             info ("Select image")
         }
     }
@@ -75,5 +80,17 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            IMAGE_REQUEST -> {
+                if (data != null) {
+                    ringfort.image = data.getData().toString()
+                    ringfortImage.setImageBitmap(readImage(this, resultCode, data))
+                }
+            }
+        }
     }
 }
