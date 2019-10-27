@@ -14,4 +14,5 @@
     <string name="enter_ringfort_details"> Please enter a Ringfort Name &amp; Description </string>
     <string name="save_ringfort"> Save Changes </string>
     <string name="button_addImage"> Select Image </string>
+    <string name="select_ringfort_image">Select placemark image</string>
 </resources>
