@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bernardthompson_assignment1.R
 import kotlinx.android.synthetic.main.activity_ringfort_list.*
 import main.MainApp
+import models.RingfortModel
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
 
-class RingfortActivityList : AppCompatActivity() {
+class RingfortActivityList : AppCompatActivity(), RingfortListener {
 
     lateinit var app: MainApp
 
@@ -24,7 +26,7 @@ class RingfortActivityList : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = RingfortAdapter(app.ringforts)
+        recyclerView.adapter = RingfortAdapter(app.ringforts.findAll(), this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -37,6 +39,10 @@ class RingfortActivityList : AppCompatActivity() {
             R.id.item_add -> startActivityForResult<RingfortActivity>(0)
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onRingfortClick(ringfort: RingfortModel) {
+        startActivityForResult(intentFor<RingfortActivity>().putExtra("ringfort edit", ringfort), 0)
     }
 }
 

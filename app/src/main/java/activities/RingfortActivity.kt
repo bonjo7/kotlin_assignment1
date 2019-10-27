@@ -26,21 +26,25 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
         toolbarAdd.title = title
         setSupportActionBar(toolbarAdd)
 
+        if (intent.hasExtra("ringfort_edit")) {
+            ringfort = intent.extras?.getParcelable<RingfortModel>("ringfort_edit")!!
+            ringfortName.setText(ringfort.name)
+            ringfortDescription.setText(ringfort.description)
+        }
+
         btnAdd.setOnClickListener() {
             ringfort.name = ringfortName.text.toString()
             ringfort.description = ringfortDescription.text.toString()
 
-            if (ringfort.name.isNotEmpty()) {
-                app.ringforts.add(ringfort.copy())
+            if (ringfort.name.isNotEmpty() && ringfort.description.isNotEmpty()) {
+                app.ringforts.create(ringfort.copy())
                 info("add Button Pressed: $ringfortName")
-                for(r in app.ringforts.indices){
-                    info("Ringfort[$r]:${this.app.ringforts[r]}")
-                }
+
                 setResult(AppCompatActivity.RESULT_OK)
                 finish()
             }
             else {
-                toast ("Please Enter a title")
+                toast (R.string.enter_ringfort_details)
             }
         }
     }

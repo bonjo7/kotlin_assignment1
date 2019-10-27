@@ -8,7 +8,11 @@ import com.example.bernardthompson_assignment1.R
 import kotlinx.android.synthetic.main.card_ringfort.view.*
 import models.RingfortModel
 
-class RingfortAdapter constructor(private var ringforts: List<RingfortModel>) :
+interface RingfortListener {
+    fun onRingfortClick(ringfort: RingfortModel)
+}
+
+class RingfortAdapter constructor(private var ringforts: List<RingfortModel>, private val listener : RingfortListener) :
     RecyclerView.Adapter<RingfortAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -23,7 +27,7 @@ class RingfortAdapter constructor(private var ringforts: List<RingfortModel>) :
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val ringfort = ringforts[holder.adapterPosition]
-        holder.bind(ringfort)
+        holder.bind(ringfort, listener)
 
     }
 
@@ -31,10 +35,11 @@ class RingfortAdapter constructor(private var ringforts: List<RingfortModel>) :
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(ringfort: RingfortModel) {
+        fun bind(ringfort: RingfortModel, listener : RingfortListener) {
 
             itemView.ringfortCName.text = ringfort.name
             itemView.ringfortCDescription.text = ringfort.description
+            itemView.setOnClickListener { listener.onRingfortClick(ringfort) }
         }
     }
 }
