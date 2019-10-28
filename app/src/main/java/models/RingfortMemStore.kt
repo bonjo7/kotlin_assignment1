@@ -23,6 +23,10 @@ class RingfortMemStore : RingfortStore, AnkoLogger {
         logAll()
     }
 
+    override fun delete(ringfort: RingfortModel){
+        ringforts.remove(ringfort)
+    }
+
     override fun update(ringfort: RingfortModel) {
         var foundRingfort: RingfortModel? = ringforts.find { p -> p.id == ringfort.id}
         if(foundRingfort != null) {

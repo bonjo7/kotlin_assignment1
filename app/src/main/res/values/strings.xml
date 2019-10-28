@@ -18,4 +18,5 @@
     <string name="change_ringfort_image">Change image</string>
     <string name="button_location">Set Location</string>
     <string name="title_activity_ringfort_maps">Map</string>
+    <string name="menu_deletelRingfort">Delete</string>
 </resources>

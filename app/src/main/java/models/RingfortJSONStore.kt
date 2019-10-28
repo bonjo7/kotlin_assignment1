@@ -42,7 +42,16 @@ class RingfortJSONStore : RingfortStore, AnkoLogger {
 
 
     override fun update(ringfort: RingfortModel) {
-
+        var foundRingfort: RingfortModel? = ringforts.find { p -> p.id == ringfort.id}
+        if(foundRingfort != null) {
+            foundRingfort.name = ringfort.name
+            foundRingfort.description = ringfort.description
+            foundRingfort.image = ringfort.image
+            foundRingfort.lat = ringfort.lat
+            foundRingfort.lng = ringfort.lng
+            foundRingfort.zoom = ringfort.zoom
+        }
+        serialize()
     }
 
     private fun serialize() {
@@ -53,5 +62,10 @@ class RingfortJSONStore : RingfortStore, AnkoLogger {
     private fun deserialize() {
         val jsonString = read(context, JSON_FILE)
         ringforts = Gson().fromJson(jsonString, listType)
+    }
+
+    override fun delete(ringfort: RingfortModel){
+        ringforts.remove(ringfort)
+        serialize()
     }
 }

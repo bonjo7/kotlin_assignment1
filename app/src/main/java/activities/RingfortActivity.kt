@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_ringfort.*
 import main.MainApp
 import models.Location
 import models.RingfortModel
+import models.RingfortStore
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
@@ -67,7 +68,11 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
                 } else{
                     app.ringforts.create(ringfort.copy())
                 }
-                info("Ringfort created with the details - \nID: ${ringfort.id}\nName: ${ringfort.name}\nDesc: ${ringfort.description}")
+                info("Ringfort created with the details - " +
+                        "\nID: ${ringfort.id}" +
+                        "\nName: ${ringfort.name}" +
+                        "\nDesc: ${ringfort.description}" +
+                        "\n Lat: ${ringfort.lat}, Long: ${ringfort.lng}")
                 setResult(AppCompatActivity.RESULT_OK)
                 finish()
             }
@@ -103,6 +108,11 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
             R.id.item_cancel -> {
                 finish()
             }
+            R.id.item_delete -> {
+                app.ringforts.delete(ringfort)
+                finish()
+            }
+
         }
         return super.onOptionsItemSelected(item)
     }
