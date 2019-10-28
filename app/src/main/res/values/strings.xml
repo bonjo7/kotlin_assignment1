@@ -19,4 +19,8 @@
     <string name="button_location">Set Location</string>
     <string name="title_activity_ringfort_maps">Map</string>
     <string name="menu_deletelRingfort">Delete</string>
+    <string name="notReg">Not Registered? Register here</string>
+    <string name="emailHint">Enter Email</string>
+    <string name="passwordHint">Enter password</string>
+    <string name="nameHint">Enter Name</string>
 </resources>
