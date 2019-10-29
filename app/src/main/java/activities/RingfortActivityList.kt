@@ -6,6 +6,7 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bernardthompson_assignment1.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_ringfort_list.*
 import main.MainApp
 import models.RingfortModel
@@ -24,6 +25,10 @@ class RingfortActivityList : AppCompatActivity(), RingfortListener {
 
         toolbar.title = title
         setSupportActionBar(toolbar)
+
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
+
+        bottomNavigation.setOnNavigationItemSelectedListener(bottomListener)
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
@@ -47,6 +52,26 @@ class RingfortActivityList : AppCompatActivity(), RingfortListener {
 
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private val bottomListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.logoutBottom -> {
+                startActivity(Intent(this@RingfortActivityList, UserLogin::class.java))
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.item_add -> {
+                startActivityForResult<RingfortActivity>(0)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.infoBottom -> {
+
+                return@OnNavigationItemSelectedListener true
+
+            }
+
+        }
+        false
     }
 
     override fun onRingfortClick(ringfort: RingfortModel) {

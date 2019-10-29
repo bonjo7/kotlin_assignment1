@@ -27,4 +27,6 @@
     <string name="register">Register</string>
     <string name="Userdetails">Please enter email and password</string>
     <string name="title_activity_test_nav">testNav</string>
+    <string name="info">About App</string>
+    <string name="logout">Logout</string>
 </resources>

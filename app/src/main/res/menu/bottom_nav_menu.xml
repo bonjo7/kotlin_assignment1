@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:id="@+id/item_add"
+        android:icon="@drawable/add_item"
+        android:title="@string/button_addRingfort" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
+        android:id="@+id/infoBottom"
+        android:icon="@drawable/ic_info"
+        android:title="@string/info" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:id="@+id/logoutBottom"
+        android:icon="@drawable/ic_exit"
+        android:title="@string/logout" />
 
 </menu>
