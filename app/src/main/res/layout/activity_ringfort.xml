@@ -28,6 +28,8 @@
                 app:titleTextColor="@color/colorPrimaryDark" />
         </com.google.android.material.appbar.AppBarLayout>
 
+
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -110,10 +112,12 @@
                     android:text="@string/button_addRingfort"
                     android:textColor="@color/colorAccent"
                     android:textSize="16sp" />
+
+
             </LinearLayout>
+
+
         </ScrollView>
-
-
 
     </RelativeLayout>
 

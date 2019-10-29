@@ -12,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".testNav"
+            android:label="@string/title_activity_test_nav"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -19,8 +22,7 @@
 
         <activity
             android:name=".RingfortMapsActivity"
-            android:label="@string/title_activity_ringfort_maps"></activity>
-
+            android:label="@string/title_activity_ringfort_maps" />
         <activity
             android:name="activities.SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
