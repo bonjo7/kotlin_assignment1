@@ -18,7 +18,7 @@ class UserMemStore : UserStore, AnkoLogger {
     }
 
     override fun create(user: UserModel) {
-        user.id = getUserId()
+        user.userId = getUserId()
         users.add(user)
         logAll()
     }
@@ -28,7 +28,7 @@ class UserMemStore : UserStore, AnkoLogger {
 //    }
 
     override fun update(user: UserModel) {
-        var foundUser: UserModel? = users.find { p -> p.id == user.id}
+        var foundUser: UserModel? = users.find { p -> p.userId == user.userId}
         if(foundUser != null) {
             foundUser.userName = user.userName
             foundUser.userEmail = user.userEmail

@@ -49,8 +49,8 @@ class UserRegister : AppCompatActivity(), AnkoLogger {
                 toast("Redirecting to login page....")
                 info("Registered user\n" +
                         "Name: ${user.userName}\n" +
-                        "Email: ${user.userEmail}\n" +
-                        "ID: ${user.userId}")
+                        "Email: ${user.userEmail}\n")
+
                 startActivity(Intent(this@UserRegister, UserLogin::class.java))
 
 

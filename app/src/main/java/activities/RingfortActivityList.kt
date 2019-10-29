@@ -43,8 +43,6 @@ class RingfortActivityList : AppCompatActivity(), RingfortListener {
     }
 
     override fun onRingfortClick(ringfort: RingfortModel) {
-//        toast("Hello")
-//        startActivity(Intent(this@RingfortActivityList, RingfortActivity::class.java))
 
         startActivityForResult(intentFor<RingfortActivity>().putExtra("ringfort_edit", ringfort), 0)
     }
