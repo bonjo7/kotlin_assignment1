@@ -21,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
         //4second splash time
         Handler().postDelayed({
             //start main activity
-            startActivity(Intent(this@SplashActivity, UserLogin::class.java))
+            startActivity(Intent(this@SplashActivity, RingfortActivity::class.java))
             //finish this activity
             finish()
         },4000)

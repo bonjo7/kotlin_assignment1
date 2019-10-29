@@ -37,8 +37,15 @@ class RingfortActivityList : AppCompatActivity(), RingfortListener {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
-            R.id.item_add -> startActivityForResult<RingfortActivity>(0)
+            R.id.item_add -> {
+                startActivityForResult<RingfortActivity>(0)
+            }
+            R.id.logout -> {
+                startActivity(Intent(this@RingfortActivityList, UserLogin::class.java))
+            }
         }
+
+
         return super.onOptionsItemSelected(item)
     }
 

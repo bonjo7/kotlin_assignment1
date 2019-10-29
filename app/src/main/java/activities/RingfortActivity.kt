@@ -36,6 +36,7 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
 
         toolbarAdd.title = title
         setSupportActionBar(toolbarAdd)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         app = application as MainApp
 
@@ -96,6 +97,14 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
             }
             startActivity (intentFor<RingfortMapsActivity>().putExtra("location", location))
         }
+
+
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        startActivity(Intent(this@RingfortActivity, RingfortActivityList::class.java))
+        return true
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -111,6 +120,10 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
             R.id.item_delete -> {
                 app.ringforts.delete(ringfort)
                 finish()
+            }
+            R.id.home -> {
+                onBackPressed()
+                true
             }
 
         }

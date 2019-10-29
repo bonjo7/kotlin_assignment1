@@ -5,7 +5,11 @@
 
         <item
             android:id="@+id/item_add"
-            android:icon="@android:drawable/ic_menu_add"
             android:title="@string/menu_addRingfort"
-            app:showAsAction="always" />
+            android:icon="@drawable/add_item"
+            app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/logout"
+        android:title="Logout"
+        app:showAsAction="never" />
     </menu>
