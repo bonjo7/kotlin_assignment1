@@ -2,14 +2,12 @@ package activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bernardthompson_assignment1.R
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
-import org.jetbrains.anko.toast
 
 class UserLogin : AppCompatActivity(), AnkoLogger {
 
@@ -25,6 +23,11 @@ class UserLogin : AppCompatActivity(), AnkoLogger {
                 info("Textview tvreg clicked\nRedirecting to register page")
             }
         })
+
+        btnLogin.setOnClickListener {
+
+
+        }
     }
 
 }

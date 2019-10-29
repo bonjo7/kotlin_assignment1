@@ -3,16 +3,21 @@ package main
 import android.app.Application
 import models.RingfortJSONStore
 import models.RingfortStore
+import models.UserJSONStore
+import models.UserStore
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
 class MainApp : Application(), AnkoLogger {
+
+    lateinit var users : UserStore
 
     lateinit var ringforts : RingfortStore
 
     override fun onCreate() {
         super.onCreate()
         ringforts = RingfortJSONStore(applicationContext)
+        users = UserJSONStore(applicationContext)
         info("Archaeological Field Work App Started")
     }
 }
