@@ -32,6 +32,8 @@
         </activity>
         <activity android:name="activities.RingfortActivityList" />
         <activity android:name="activities.RingfortActivity" />
+        <activity android:name="activities.UserLogin" />
+        <activity android:name="activities.UserRegister" />
     </application>
 
 </manifest>
