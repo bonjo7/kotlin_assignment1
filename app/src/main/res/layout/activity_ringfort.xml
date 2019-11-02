@@ -69,6 +69,24 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp" />
 
+                <CheckBox
+                    android:id="@+id/visitedL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/visitedDateL"
+                    android:hint="@string/hint_visited"
+                    android:text="Visited" />
+
+                <TextView
+                    android:id="@+id/visitedDateL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:ems="10"
+                    android:inputType="date"
+                    android:hint="@string/hint_visitedDate"
+                    android:paddingLeft="0dp" />
+
                 <Button
                     android:id="@+id/chooseImage"
                     android:layout_width="match_parent"
