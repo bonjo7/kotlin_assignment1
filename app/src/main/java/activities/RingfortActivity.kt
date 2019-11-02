@@ -58,6 +58,8 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
             ringfort = intent.extras?.getParcelable<RingfortModel>("ringfort_edit")!!
             ringfortName.setText(ringfort.name)
             ringfortDescription.setText(ringfort.description)
+            visitedL.setChecked(ringfort.visited)
+            visitedDateL.setText(ringfort.visitedDate)
             ringfortImage.setImageBitmap(readImageFromPath(this, ringfort.image))
             if(ringfort.image != null){
                 chooseImage.setText(R.string.change_ringfort_image)
@@ -71,6 +73,8 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
 
             ringfort.name = ringfortName.text.toString()
             ringfort.description = ringfortDescription.text.toString()
+            ringfort.visited = visitedL.isChecked
+            ringfort.visitedDate = visitedDateL.text.toString()
 
             if (ringfort.name.isEmpty()) {
                 toast(R.string.enter_ringfort_details)
@@ -84,7 +88,9 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
                         "\nID: ${ringfort.id}" +
                         "\nName: ${ringfort.name}" +
                         "\nDesc: ${ringfort.description}" +
-                        "\n Lat: ${ringfort.lat}, Long: ${ringfort.lng}")
+                        "\n Lat: ${ringfort.lat}, Long: ${ringfort.lng}" +
+                        "\nVisted: ${ringfort.visited}" +
+                        "\nDate Visited: ${ringfort.visitedDate}")
                 setResult(AppCompatActivity.RESULT_OK)
                 finish()
             }
