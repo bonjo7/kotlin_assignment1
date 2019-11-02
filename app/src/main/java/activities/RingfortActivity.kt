@@ -111,7 +111,7 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
 
         visitedDateL.setOnClickListener {
             val datepicker = DatePickerDialog(
-                this,
+                this, R.style.DatePickerDialogTheme,
                 DatePickerDialog.OnDateSetListener { DatePicker, year, month, day ->
                     visitedDateL.setText("$day - $month - $year")}, year, month, day
                 )
