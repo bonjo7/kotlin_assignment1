@@ -41,6 +41,7 @@ class RingfortAdapter constructor(private var ringforts: List<RingfortModel>,
 
             itemView.ringfortCName.text = ringfort.name
             itemView.ringfortCDescription.text = ringfort.description
+            itemView.ringfortCVisited.text = ringfort.visitedDate
             itemView.imageC.setImageBitmap(readImageFromPath(itemView.context, ringfort.image))
             itemView.setOnClickListener { listener.onRingfortClick(ringfort) }
         }

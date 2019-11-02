@@ -75,7 +75,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/visitedDateL"
                     android:hint="@string/hint_visited"
-                    android:text="Visited" />
+                    android:text="@string/check_title"
+                    android:theme="@style/MyCheckbox"/>
 
                 <TextView
                     android:id="@+id/visitedDateL"

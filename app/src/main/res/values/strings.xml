@@ -31,4 +31,5 @@
     <string name="logout">Logout</string>
     <string name="hint_visited">Have you visited this Ringfort?</string>
     <string name="hint_visitedDate">Enter Date you Visited</string>
+    <string name="check_title">Visited</string>
 </resources>

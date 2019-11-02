@@ -34,13 +34,23 @@
             android:textSize="18sp"
             android:layout_height="wrap_content" />
 
+            <TextView
+                android:id="@+id/ringfortCVisited"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ringfortCName"
+                />
+
         <TextView
             android:id="@+id/ringfortCDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ringfortCName" />
+            android:layout_below="@id/ringfortCVisited" />
 
-    </LinearLayout>
+
+
+
+        </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
