@@ -40,12 +40,13 @@ class UserLogin : AppCompatActivity(), AnkoLogger {
             val passEmail = Lname.text.toString()
             val passPassword = Lpassword.text.toString()
 
-            val userJSONFile: String = File("/data/data/com.example.bernardthompson_assignment1/files/users.json").readText(Charsets.UTF_8)
+//            val userJSONFile: String = File("/data/data/com.example.bernardthompson_assignment1/files/users.json").readText(Charsets.UTF_8)
             info("Reading User JSON file")
 
             users.forEach { user ->
                 if (passEmail.equals(user.userEmail) && passPassword.equals(user.userPassword)) {
                     validateUser = true
+                    intent.putExtra("user", user)
                     startActivity(Intent(this@UserLogin, RingfortActivityList::class.java))
                 }else if(!validateUser) {
 

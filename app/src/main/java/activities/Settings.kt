@@ -10,10 +10,7 @@ import kotlinx.android.synthetic.main.activity_ringfort.toolbarAdd
 import kotlinx.android.synthetic.main.activity_settings.*
 import main.MainApp
 import models.UserModel
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
-import org.jetbrains.anko.startActivityForResult
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.*
 
 class Settings : AppCompatActivity(), AnkoLogger {
 
@@ -33,14 +30,16 @@ class Settings : AppCompatActivity(), AnkoLogger {
 
         app = application as MainApp
 
+//        user = intent.getParcelableExtra("user")
+
         save_user_settings.setOnClickListener(){
 
-//                useremail.setText(app.loggedInUser.userEmail)
-//                userpassword.setText(app.loggedInUser.userPassword)
+                useremail.setText(user.userEmail)
+                userpassword.setText(user.userPassword)
 
                 user.userEmail = useremail.text.toString()
                 user.userPassword = userpassword.text.toString()
-                app.users.update(user)
+                app.users.update(user.copy())
 
                 info("User ${user.userName} has been updated" +
                         "\nNew email: ${user.userEmail}" +
@@ -49,6 +48,8 @@ class Settings : AppCompatActivity(), AnkoLogger {
                 toast("Saved changes")
 
                 startActivity(Intent(this@Settings, RingfortActivityList::class.java))
+//            startActivityForResult(intentFor<RingfortActivityList>().putExtra("user", user), 1) //return to main screen
+//            setResult(AppCompatActivity.RESULT_OK)
             }
 
 

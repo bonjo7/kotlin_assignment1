@@ -11,8 +11,6 @@ class MainApp : Application(), AnkoLogger {
 
     lateinit var ringforts : RingfortStore
 
-    lateinit var loggedInUser : UserModel
-
     override fun onCreate() {
         super.onCreate()
         ringforts = RingfortJSONStore(applicationContext)

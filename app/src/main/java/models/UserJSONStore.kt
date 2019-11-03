@@ -30,13 +30,14 @@ class UserJSONStore : UserStore, AnkoLogger {
         }
     }
 
-    override fun findAll(): MutableList<UserModel> {
+    override fun findAll(): List<UserModel> {
         return users
     }
 
-//    override fun findByOne(email: String): UserModel? {
-//        return users.find { user -> user.userEmail == email }
-//    }
+//    override fun findByID(id:Long) : UserModel?{
+//    val foundUser: UserModel? = users.find { it.userId == id }
+//    return foundUser
+//}
 
     override fun create(user: UserModel) {
         user.userId = userGenerateRandomId()
