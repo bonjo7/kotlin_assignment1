@@ -64,8 +64,8 @@ class RingfortActivityList : AppCompatActivity(), RingfortListener {
                 startActivityForResult<RingfortActivity>(0)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.infoBottom -> {
-
+            R.id.settings_bottom -> {
+                startActivity(Intent(this@RingfortActivityList, Settings::class.java))
                 return@OnNavigationItemSelectedListener true
 
             }

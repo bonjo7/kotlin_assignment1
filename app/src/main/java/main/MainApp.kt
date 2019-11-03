@@ -1,10 +1,7 @@
 package main
 
 import android.app.Application
-import models.RingfortJSONStore
-import models.RingfortStore
-import models.UserJSONStore
-import models.UserStore
+import models.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
@@ -13,6 +10,8 @@ class MainApp : Application(), AnkoLogger {
     lateinit var users : UserStore
 
     lateinit var ringforts : RingfortStore
+
+    lateinit var loggedInUser : UserModel
 
     override fun onCreate() {
         super.onCreate()

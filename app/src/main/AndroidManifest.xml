@@ -36,6 +36,7 @@
         <activity android:name="activities.RingfortActivity" />
         <activity android:name="activities.UserLogin" />
         <activity android:name="activities.UserRegister" />
+        <activity android:name="activities.Settings" />
     </application>
 
 </manifest>

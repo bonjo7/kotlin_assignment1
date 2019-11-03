@@ -7,7 +7,7 @@
         android:title="@string/button_addRingfort" />
 
     <item
-        android:id="@+id/infoBottom"
+        android:id="@+id/settings_bottom"
         android:icon="@drawable/settings"
         android:title="@string/settings" />
 
