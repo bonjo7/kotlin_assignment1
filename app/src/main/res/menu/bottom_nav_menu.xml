@@ -8,8 +8,8 @@
 
     <item
         android:id="@+id/infoBottom"
-        android:icon="@drawable/ic_info"
-        android:title="@string/info" />
+        android:icon="@drawable/settings"
+        android:title="@string/settings" />
 
     <item
         android:id="@+id/logoutBottom"
