@@ -18,7 +18,8 @@
         android:textStyle="bold" />
     <ImageView
         android:layout_width="250dp"
-        android:layout_height="250dp" />
+        android:layout_height="250dp"
+        android:src="@drawable/ringfort"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

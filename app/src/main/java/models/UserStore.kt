@@ -8,5 +8,7 @@ interface UserStore {
     fun create(user: UserModel)
     fun update(user: UserModel)
 //    fun delete(user: UserModel)
-//    fun findByID(id:Long) : UserModel?
+//    fun findByEmail(name: String): UserModel ?
+//    fun login(password: String, email: String): Boolean
+//    fun findByEmail(email: String): UserModel?
 }

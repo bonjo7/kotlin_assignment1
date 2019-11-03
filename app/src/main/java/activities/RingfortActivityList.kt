@@ -46,6 +46,7 @@ class RingfortActivityList : AppCompatActivity(), RingfortListener {
                 startActivityForResult<RingfortActivity>(0)
             }
             R.id.logout -> {
+                finish()
                 startActivity(Intent(this@RingfortActivityList, UserLogin::class.java))
             }
         }

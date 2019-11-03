@@ -1,6 +1,5 @@
 package activities
 
-import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Build
@@ -8,11 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.DatePicker
 import androidx.annotation.RequiresApi
 import com.example.bernardthompson_assignment1.R
 import com.example.bernardthompson_assignment1.RingfortMapsActivity
-import com.google.android.gms.maps.model.LatLng
+
 import helpers.readImage
 import helpers.readImageFromPath
 import helpers.showImagePicker
@@ -20,7 +18,6 @@ import kotlinx.android.synthetic.main.activity_ringfort.*
 import main.MainApp
 import models.Location
 import models.RingfortModel
-import models.RingfortStore
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
@@ -118,7 +115,7 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
         visitedDateL.setOnClickListener {
             val datepicker = DatePickerDialog(
                 this, R.style.DatePickerDialogTheme,
-                DatePickerDialog.OnDateSetListener { DatePicker, year, month, day ->
+                DatePickerDialog.OnDateSetListener { _, year, month, day ->
                     visitedDateL.setText("$day - $month - $year")}, year, month, day
                 )
             datepicker.show()

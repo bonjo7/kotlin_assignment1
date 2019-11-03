@@ -8,6 +8,7 @@ import helpers.exists
 import helpers.read
 import helpers.write
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 import java.util.*
 
 val USER_JSON_FILE = "users.json"
@@ -34,10 +35,20 @@ class UserJSONStore : UserStore, AnkoLogger {
         return users
     }
 
-//    override fun findByID(id:Long) : UserModel?{
-//    val foundUser: UserModel? = users.find { it.userId == id }
-//    return foundUser
-//}
+//    override fun login(email: String, password: String): Boolean{
+//        val user = findByEmail(email)
+//
+//        if (user != null){
+//            if (user.userPassword == password){
+//                return true
+//            }
+//        }
+//        return false
+//    }
+//
+//    override fun findByEmail(email: String): UserModel ? {
+//        return users.find { user -> user.userEmail == email }
+//    }
 
     override fun create(user: UserModel) {
         user.userId = userGenerateRandomId()
@@ -51,9 +62,17 @@ class UserJSONStore : UserStore, AnkoLogger {
             foundUser.userName = user.userName
             foundUser.userEmail = user.userEmail
             foundUser.userPassword = user.userPassword
+            foundUser.userId = user.userId
+            logAll()
+            serialize()
 
         }
     }
+
+    fun logAll() {
+        users.forEach{ info("${it}") }
+    }
+
 
     private fun serialize() {
         val jsonString = USER_gsonBuilder.toJson(users, USER_listType)
