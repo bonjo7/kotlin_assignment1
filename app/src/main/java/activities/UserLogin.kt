@@ -27,7 +27,7 @@ class UserLogin : AppCompatActivity(), AnkoLogger {
 
         app = application as MainApp
 
-        val users: List<UserModel> = app.users.findAll()
+//        val users: List<UserModel> = app.users.findAll()
 
         tvreg.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
@@ -44,20 +44,32 @@ class UserLogin : AppCompatActivity(), AnkoLogger {
 //            val userJSONFile: String = File("/data/data/com.example.bernardthompson_assignment1/files/users.json").readText(Charsets.UTF_8)
             info("Reading User JSON file")
 
-            users.forEach { user ->
-                if (passEmail.equals(user.userEmail) && passPassword.equals(user.userPassword)) {
-                    validateUser = true
-                    intent.putExtra("user", user)
-                    startActivity(Intent(this@UserLogin, RingfortActivityList::class.java))
-                }else if(!validateUser) {
+//            users.forEach { user ->
+//                if (passEmail.equals(user.userEmail) && passPassword.equals(user.userPassword)) {
+//                    validateUser = true
+//                    intent.putExtra("user", user)
+//                    startActivity(Intent(this@UserLogin, RingfortActivityList::class.java))
+//                }else if(!validateUser) {
+//
+//                    toast("Wrong details, try again")
+//
+//                }
+//            }
 
-                    toast("Wrong details, try again")
+            val loggedinUset = app.users.login(passEmail, passPassword)
+
+            if (loggedinUset) {
+
+                var currentUser = app.users.findByEmail(passEmail)
+                if (currentUser != null) {
+
+                    app.currentUser = currentUser
+                    startActivity(intentFor<RingfortActivityList>())
 
                 }
+
+
             }
-
-
         }
-    }
 
-}
+    }}

@@ -11,4 +11,6 @@ interface UserStore {
 //    fun findByEmail(name: String): UserModel ?
 //    fun login(password: String, email: String): Boolean
 //    fun findByEmail(email: String): UserModel?
+    fun login(email: String, password: String): Boolean
+    fun findByEmail(name: String): UserModel?
 }

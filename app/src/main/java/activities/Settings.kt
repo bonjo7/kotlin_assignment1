@@ -30,18 +30,23 @@ class Settings : AppCompatActivity(), AnkoLogger {
 
         app = application as MainApp
 
+        var RingfortsSize = app.ringforts.findAll().size
+
 //        user = intent.getParcelableExtra("user")
 
-        save_user_settings.setOnClickListener(){
 
-                useremail.setText(user.userEmail)
-                userpassword.setText(user.userPassword)
 
-                user.userEmail = useremail.text.toString()
-                user.userPassword = userpassword.text.toString()
+                updateuseremail.setText(app.currentUser.userEmail)
+                updateuserpassword.setText(app.currentUser.userPassword)
+
+            save_user_settings.setOnClickListener(){
+
+                user.userId = app.currentUser.userId
+                user.userEmail = updateuseremail.text.toString()
+                user.userPassword = updateuserpassword.text.toString()
                 app.users.update(user.copy())
 
-                info("User ${user.userName} has been updated" +
+                info("User ${app.currentUser.userName} has been updated" +
                         "\nNew email: ${user.userEmail}" +
                         "\nNew Password: ${user.userPassword}")
 
@@ -51,6 +56,8 @@ class Settings : AppCompatActivity(), AnkoLogger {
 //            startActivityForResult(intentFor<RingfortActivityList>().putExtra("user", user), 1) //return to main screen
 //            setResult(AppCompatActivity.RESULT_OK)
             }
+
+        size.setText("Number of Ringforts: ${RingfortsSize} in total")
 
 
     }
