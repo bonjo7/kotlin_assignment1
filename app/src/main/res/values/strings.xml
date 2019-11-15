@@ -36,4 +36,7 @@
     <string name="user_settings">Settings</string>
     <string name="all_maps">Map</string>
     <string name="title_activity_ringfort_all_maps">Map of all Ringforts</string>
+    <string name="ringfort_image_placeholder">Ringfort Image</string>
+    <string name="ringfort_name_placeholder">Ringfort Name</string>
+    <string name="ringfort_description_placeholder">Ringfort Description</string>
 </resources>
