@@ -5,4 +5,5 @@ interface RingfortStore {
     fun create(ringfort: RingfortModel)
     fun update(ringfort: RingfortModel)
     fun delete(ringfort: RingfortModel)
+    fun findUserRingforts(userId: Long): List<RingfortModel>
 }

@@ -40,6 +40,10 @@ class RingfortJSONStore : RingfortStore, AnkoLogger {
         serialize()
     }
 
+    override fun findUserRingforts(userId: Long): List<RingfortModel> {
+        return ringforts.filter { it.user == userId }
+    }
+
 
     override fun update(ringfort: RingfortModel) {
         var foundRingfort: RingfortModel? = ringforts.find { p -> p.id == ringfort.id}

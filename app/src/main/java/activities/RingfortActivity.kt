@@ -31,6 +31,7 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
     lateinit var app: MainApp
     val IMAGE_REQUEST = 1
     val LOCATION_REQUEST = 2
+    var edit = false
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +44,7 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
 
         app = application as MainApp
 
-        var edit = false
+        edit = true
 
         val calender = Calendar.getInstance()
         val year = calender.get(Calendar.YEAR)
@@ -133,6 +134,7 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_ringfort, menu)
+        if (edit && menu != null) menu.getItem(0).setVisible(true)
         return super.onCreateOptionsMenu(menu)
     }
 
