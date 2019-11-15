@@ -18,10 +18,7 @@ import kotlinx.android.synthetic.main.activity_ringfort.*
 import main.MainApp
 import models.Location
 import models.RingfortModel
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
-import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.*
 import java.util.*
 
 
@@ -110,7 +107,7 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
                 location.lng = ringfort.lng
                 location.zoom = ringfort.zoom
             }
-            startActivity (intentFor<RingfortMapsActivity>().putExtra("location", location))
+            startActivityForResult (intentFor<RingfortMapsActivity>().putExtra("location", location), LOCATION_REQUEST)
         }
 
         visitedDateL.setOnClickListener {

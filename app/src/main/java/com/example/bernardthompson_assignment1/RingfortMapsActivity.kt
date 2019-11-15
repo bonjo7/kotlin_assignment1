@@ -34,14 +34,14 @@ class RingfortMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.
         mMap.setOnMarkerDragListener(this)
         mMap.setOnMarkerClickListener(this)
         val loc = LatLng(location.lat, location.lng)
-        val waterford = LatLng(52.2593, -7.1101)
+//        val waterford = LatLng(52.2593, -7.1101)
         val options = MarkerOptions()
             .title("Placemark")
             .snippet("GPS : " + loc.toString())
             .draggable(true)
             .position(loc)
         mMap.addMarker(options)
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(waterford, 16f))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, location.zoom))
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
