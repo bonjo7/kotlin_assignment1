@@ -3,7 +3,7 @@
     <string name="Loading">Loading...</string>
     <string name="button_addRingfort">Add Ringfort</string>
     <string name="ringfortName">Ringfort Name</string>
-    <string name="addRingfort">Add Ringfort</string>
+    <string name="addRingfort">Ringfort</string>
     <string name="ringfortDescription">Ringfort Description</string>
     <string name="menu_addRingfort">Add</string>
     <string name="menu_cancelRingfort">Cancel</string>
@@ -33,5 +33,7 @@
     <string name="hint_visitedDate">Enter Date you Visited</string>
     <string name="check_title">Visited</string>
     <string name="save_settings">Save</string>
-    <string name="user_settings">User Settings</string>
+    <string name="user_settings">Settings</string>
+    <string name="all_maps">Map</string>
+    <string name="title_activity_ringfort_all_maps">RingfortAllMapsActivity</string>
 </resources>

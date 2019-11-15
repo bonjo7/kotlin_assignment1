@@ -13,8 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".RingfortAllMapsActivity"
+            android:label="@string/title_activity_ringfort_all_maps"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".testNav"
-            android:label="@string/title_activity_test_nav"></activity>
+            android:label="@string/title_activity_test_nav" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

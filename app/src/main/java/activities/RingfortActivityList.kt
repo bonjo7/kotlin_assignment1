@@ -6,11 +6,13 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bernardthompson_assignment1.R
+import com.example.bernardthompson_assignment1.RingfortAllMapsActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_ringfort_list.*
 import main.MainApp
 import models.RingfortModel
 import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 
 class RingfortActivityList : AppCompatActivity(), RingfortListener {
@@ -68,8 +70,12 @@ class RingfortActivityList : AppCompatActivity(), RingfortListener {
             R.id.settings_bottom -> {
                 startActivity(Intent(this@RingfortActivityList, Settings::class.java))
                 return@OnNavigationItemSelectedListener true
-
             }
+            R.id.item_map -> {
+                startActivity<RingfortAllMapsActivity>()
+                return@OnNavigationItemSelectedListener  true
+            }
+
 
         }
         false
