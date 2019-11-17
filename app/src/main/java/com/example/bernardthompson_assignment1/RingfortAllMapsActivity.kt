@@ -1,6 +1,9 @@
 package com.example.bernardthompson_assignment1
 
+import activities.RingfortActivityList
+import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -26,6 +29,7 @@ class RingfortAllMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickList
 
         setContentView(R.layout.activity_ringfort_all_maps)
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync {
@@ -45,6 +49,24 @@ class RingfortAllMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickList
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.zoom))
 
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        startActivity(Intent(this@RingfortAllMapsActivity, RingfortActivityList::class.java))
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+
+            R.id.home -> {
+                onBackPressed()
+                true
+            }
+
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
