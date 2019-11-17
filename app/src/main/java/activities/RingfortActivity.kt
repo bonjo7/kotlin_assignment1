@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.annotation.RequiresApi
+import androidx.core.view.get
 import com.example.bernardthompson_assignment1.R
 import com.example.bernardthompson_assignment1.RingfortMapsActivity
 
@@ -60,6 +61,8 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
                 chooseImage.setText(R.string.change_ringfort_image)
                 chooseImage.setBackgroundColor(getColor(R.color.orange))
             }
+            ringfortLocation.setText("Chnage Location")
+            ringfortLocation.setBackgroundColor(getColor(R.color.orange))
             btnAdd.setText(R.string.save_ringfort)
             btnAdd.setBackgroundColor(getColor(R.color.orange))
         }
@@ -131,7 +134,7 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_ringfort, menu)
-        if (edit && menu != null) menu.getItem(0).setVisible(true)
+        if (edit && menu != null) menu.getItem(1).setVisible(true)
         return super.onCreateOptionsMenu(menu)
     }
 
