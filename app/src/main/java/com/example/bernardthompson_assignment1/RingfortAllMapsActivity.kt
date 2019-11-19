@@ -11,6 +11,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import helpers.readImageFromPath
 
 import kotlinx.android.synthetic.main.activity_ringfort_all_maps.*
 import kotlinx.android.synthetic.main.content_ringfort_all_maps.*
@@ -70,8 +71,13 @@ class RingfortAllMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickList
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
-        currentTitle.text = marker.title
-        return false
+
+        val tag = marker.tag as Long
+        val ringfort = app.ringforts.findById(tag)
+        currentTitle.text = ringfort!!.name
+        currentDescription.text = ringfort!!.description
+        currentImage.setImageBitmap(readImageFromPath(this, ringfort.image))
+        return true
     }
 
     override fun onDestroy() {
