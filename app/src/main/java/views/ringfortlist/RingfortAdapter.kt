@@ -1,4 +1,4 @@
-package activities
+package views.ringfortlist
 
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +14,8 @@ interface RingfortListener {
 }
 
 class RingfortAdapter constructor(private var ringforts: List<RingfortModel>,
-                                  private val listener : RingfortListener) :
+                                  private val listener : RingfortListener
+) :
     RecyclerView.Adapter<RingfortAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {

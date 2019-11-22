@@ -1,17 +1,14 @@
-package activities
+package views.ringfort
 
-import android.app.DatePickerDialog
 import helpers.showImagePicker
 import main.MainApp
 import models.Location
 import models.RingfortModel
 import android.content.Intent
-import com.example.bernardthompson_assignment1.R
-import com.example.bernardthompson_assignment1.RingfortMapsActivity
+import views.editLocation.EditLocationView
 import org.jetbrains.anko.intentFor
-import java.util.*
 
-class RingfortPresenter (val view: RingfortActivity){
+class RingfortPresenter (val view: RingfortView){
 
     val IMAGE_REQUEST = 1
     val LOCATION_REQUEST = 2
@@ -65,7 +62,7 @@ class RingfortPresenter (val view: RingfortActivity){
             location.lng = ringfort.lng
             location.zoom = ringfort.zoom
         }
-        view.startActivityForResult(view.intentFor<RingfortMapsActivity>().putExtra("location", location), LOCATION_REQUEST)
+        view.startActivityForResult(view.intentFor<EditLocationView>().putExtra("location", location), LOCATION_REQUEST)
     }
 
 

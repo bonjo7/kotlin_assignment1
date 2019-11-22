@@ -25,7 +25,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".RingfortMapsActivity"
+            android:name="views.editLocation.EditLocationView"
             android:label="@string/title_activity_ringfort_maps" />
         <activity
             android:name="activities.SplashActivity"
@@ -36,8 +36,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="activities.RingfortActivityList" />
-        <activity android:name="activities.RingfortActivity" />
+        <activity android:name="views.ringfortlist.RingfortListView" />
+        <activity android:name="views.ringfort.RingfortView" />
         <activity android:name="activities.UserLogin" />
         <activity android:name="activities.UserRegister" />
         <activity android:name="activities.Settings" />

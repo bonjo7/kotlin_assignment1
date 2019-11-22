@@ -11,6 +11,8 @@ import kotlinx.android.synthetic.main.activity_settings.*
 import main.MainApp
 import models.UserModel
 import org.jetbrains.anko.*
+import views.ringfort.RingfortView
+import views.ringfortlist.RingfortListView
 
 class Settings : AppCompatActivity(), AnkoLogger {
 
@@ -52,8 +54,8 @@ class Settings : AppCompatActivity(), AnkoLogger {
 
                 toast("Saved changes")
 
-                startActivity(Intent(this@Settings, RingfortActivityList::class.java))
-//            startActivityForResult(intentFor<RingfortActivityList>().putExtra("user", user), 1) //return to main screen
+                startActivity(Intent(this@Settings, RingfortListView::class.java))
+//            startActivityForResult(intentFor<RingfortListView>().putExtra("user", user), 1) //return to main screen
 //            setResult(AppCompatActivity.RESULT_OK)
             }
 
@@ -64,7 +66,7 @@ class Settings : AppCompatActivity(), AnkoLogger {
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
-        startActivity(Intent(this@Settings, RingfortActivityList::class.java))
+        startActivity(Intent(this@Settings, RingfortListView::class.java))
         return true
     }
 
@@ -88,7 +90,7 @@ class Settings : AppCompatActivity(), AnkoLogger {
                 finish()
             }
             R.id.item_add -> {
-                startActivityForResult<RingfortActivity>(0)
+                startActivityForResult<RingfortView>(0)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.settings_bottom -> {

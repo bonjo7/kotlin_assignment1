@@ -1,29 +1,21 @@
-package activities
+package views.ringfort
 
 import android.app.DatePickerDialog
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.annotation.RequiresApi
-import androidx.core.view.get
 import com.example.bernardthompson_assignment1.R
-import com.example.bernardthompson_assignment1.RingfortMapsActivity
 
-import helpers.readImage
 import helpers.readImageFromPath
-import helpers.showImagePicker
 import kotlinx.android.synthetic.main.activity_ringfort.*
-import main.MainApp
-import models.Location
 import models.RingfortModel
 import org.jetbrains.anko.*
 import java.util.*
 
 
-class RingfortActivity : AppCompatActivity(), AnkoLogger {
+class RingfortView : AppCompatActivity(), AnkoLogger {
 
 //    lateinit var app: MainApp
 //    val IMAGE_REQUEST = 1
@@ -109,7 +101,7 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
 //                location.lng = ringfort.lng
 //                location.zoom = ringfort.zoom
 //            }
-//            startActivityForResult (intentFor<RingfortMapsActivity>().putExtra("location", location), LOCATION_REQUEST)
+//            startActivityForResult (intentFor<EditLocationView>().putExtra("location", location), LOCATION_REQUEST)
 //        }
 //
 
@@ -119,7 +111,7 @@ class RingfortActivity : AppCompatActivity(), AnkoLogger {
 //
 //    override fun onSupportNavigateUp(): Boolean {
 //        onBackPressed()
-//        startActivity(Intent(this@RingfortActivity, RingfortActivityList::class.java))
+//        startActivity(Intent(this@RingfortView, RingfortListView::class.java))
 //        return true
 //    }
 //

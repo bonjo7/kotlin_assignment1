@@ -1,8 +1,7 @@
-package activities
+package views.editLocation
 
 import android.app.Activity
 import android.content.Intent
-import com.example.bernardthompson_assignment1.RingfortMapsActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
@@ -10,7 +9,7 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import models.Location
 
-class MapPresenter(val view: RingfortMapsActivity) {
+class MapPresenter(val view: EditLocationView) {
 
     var location = Location()
 

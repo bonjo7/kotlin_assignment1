@@ -1,10 +1,9 @@
 package com.example.bernardthompson_assignment1
 
-import activities.RingfortActivityList
+import views.ringfortlist.RingfortListView
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -54,7 +53,7 @@ class RingfortAllMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickList
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
-        startActivity(Intent(this@RingfortAllMapsActivity, RingfortActivityList::class.java))
+        startActivity(Intent(this@RingfortAllMapsActivity, RingfortListView::class.java))
         return true
     }
 

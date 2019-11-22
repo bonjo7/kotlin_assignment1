@@ -7,12 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.bernardthompson_assignment1.R
 import kotlinx.android.synthetic.main.activity_login.*
 import main.MainApp
-import models.UserModel
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.toast
-import java.io.File
+import views.ringfortlist.RingfortListView
 
 class UserLogin : AppCompatActivity(), AnkoLogger {
 
@@ -48,7 +46,7 @@ class UserLogin : AppCompatActivity(), AnkoLogger {
 //                if (passEmail.equals(user.userEmail) && passPassword.equals(user.userPassword)) {
 //                    validateUser = true
 //                    intent.putExtra("user", user)
-//                    startActivity(Intent(this@UserLogin, RingfortActivityList::class.java))
+//                    startActivity(Intent(this@UserLogin, RingfortListView::class.java))
 //                }else if(!validateUser) {
 //
 //                    toast("Wrong details, try again")
@@ -64,7 +62,7 @@ class UserLogin : AppCompatActivity(), AnkoLogger {
                 if (currentUser != null) {
 
                     app.currentUser = currentUser
-                    startActivity(intentFor<RingfortActivityList>())
+                    startActivity(intentFor<RingfortListView>())
 
                 }
 

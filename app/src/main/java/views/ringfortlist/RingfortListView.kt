@@ -1,5 +1,7 @@
-package activities
+package views.ringfortlist
 
+import activities.Settings
+import activities.UserLogin
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
@@ -9,13 +11,12 @@ import com.example.bernardthompson_assignment1.R
 import com.example.bernardthompson_assignment1.RingfortAllMapsActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_ringfort_list.*
-import main.MainApp
 import models.RingfortModel
-import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
+import views.ringfort.RingfortView
 
-class RingfortActivityList : AppCompatActivity(), RingfortListener {
+class RingfortListView : AppCompatActivity(), RingfortListener {
 
     lateinit var presenter: RingfortListPresenter
 
@@ -55,15 +56,15 @@ class RingfortActivityList : AppCompatActivity(), RingfortListener {
         private val bottomListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.logoutBottom -> {
-                startActivity(Intent(this@RingfortActivityList, UserLogin::class.java))
+                startActivity(Intent(this@RingfortListView, UserLogin::class.java))
                 return@OnNavigationItemSelectedListener true
             }
             R.id.item_add -> {
-                startActivityForResult<RingfortActivity>(0)
+                startActivityForResult<RingfortView>(0)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.settings_bottom -> {
-                startActivity(Intent(this@RingfortActivityList, Settings::class.java))
+                startActivity(Intent(this@RingfortListView, Settings::class.java))
                 return@OnNavigationItemSelectedListener true
             }
             R.id.item_map -> {
@@ -104,11 +105,11 @@ class RingfortActivityList : AppCompatActivity(), RingfortListener {
 //    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 //        when (item?.itemId) {
 //            R.id.item_add -> {
-//                startActivityForResult<RingfortActivity>(0)
+//                startActivityForResult<RingfortView>(0)
 //            }
 //            R.id.logout -> {
 //                finish()
-//                startActivity(Intent(this@RingfortActivityList, UserLogin::class.java))
+//                startActivity(Intent(this@RingfortListView, UserLogin::class.java))
 //            }
 //        }
 //
@@ -119,15 +120,15 @@ class RingfortActivityList : AppCompatActivity(), RingfortListener {
 //    private val bottomListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
 //        when (item.itemId) {
 //            R.id.logoutBottom -> {
-//                startActivity(Intent(this@RingfortActivityList, UserLogin::class.java))
+//                startActivity(Intent(this@RingfortListView, UserLogin::class.java))
 //                return@OnNavigationItemSelectedListener true
 //            }
 //            R.id.item_add -> {
-//                startActivityForResult<RingfortActivity>(0)
+//                startActivityForResult<RingfortView>(0)
 //                return@OnNavigationItemSelectedListener true
 //            }
 //            R.id.settings_bottom -> {
-//                startActivity(Intent(this@RingfortActivityList, Settings::class.java))
+//                startActivity(Intent(this@RingfortListView, Settings::class.java))
 //                return@OnNavigationItemSelectedListener true
 //            }
 //            R.id.item_map -> {
@@ -142,7 +143,7 @@ class RingfortActivityList : AppCompatActivity(), RingfortListener {
 //
 //    override fun onRingfortClick(ringfort: RingfortModel) {
 //
-//        startActivityForResult(intentFor<RingfortActivity>().putExtra("ringfort_edit", ringfort), 0)
+//        startActivityForResult(intentFor<RingfortView>().putExtra("ringfort_edit", ringfort), 0)
 //    }
 //
 //    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
