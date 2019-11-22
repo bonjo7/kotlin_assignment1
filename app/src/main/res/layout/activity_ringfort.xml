@@ -34,22 +34,22 @@
             android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/ringfortName"
+                android:id="@+id/ringfortDescription"
                 android:layout_width="380dp"
                 android:layout_height="52dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="15dp"
                 android:ems="10"
-                android:hint="@string/ringfortName"
+                android:hint="@string/ringfortDescription"
                 android:inputType="text"
                 android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ringfortDescription" />
+                app:layout_constraintTop_toBottomOf="@+id/ringfortName" />
 
             <EditText
-                android:id="@+id/ringfortDescription"
+                android:id="@+id/ringfortName"
                 android:layout_width="380dp"
                 android:layout_height="54dp"
                 android:layout_marginStart="15dp"
@@ -58,9 +58,9 @@
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:ems="10"
-                android:hint="@string/ringfortDescription"
+                android:hint="@string/ringfortName"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/ringfortName"
+                app:layout_constraintBottom_toTopOf="@+id/ringfortDescription"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -73,7 +73,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/button_addImage"
                 app:layout_constraintStart_toEndOf="@+id/ringfortLocation"
-                app:layout_constraintTop_toBottomOf="@+id/ringfortName" />
+                app:layout_constraintTop_toBottomOf="@+id/ringfortDescription" />
 
             <ImageView
                 android:id="@+id/ringfortImage"
@@ -97,7 +97,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/button_location"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ringfortName" />
+                app:layout_constraintTop_toBottomOf="@+id/ringfortDescription" />
 
             <TextView
                 android:id="@+id/visitedDateL"
