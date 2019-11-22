@@ -17,10 +17,6 @@ class RingfortListPresenter(val view: RingfortActivityList) {
 
     fun getRingforts() = app.ringforts.findAll()
 
-    fun doAddRingfort() {
-        view.startActivityForResult<RingfortActivity>(0)
-    }
-
     fun doEditRingfort(ringfort: RingfortModel) {
         view.startActivityForResult(view.intentFor<RingfortActivity>().putExtra("ringfort_edit", ringfort), 0)
     }

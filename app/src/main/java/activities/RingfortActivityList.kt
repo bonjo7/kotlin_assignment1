@@ -17,14 +17,11 @@ import org.jetbrains.anko.startActivityForResult
 
 class RingfortActivityList : AppCompatActivity(), RingfortListener {
 
-    lateinit var app: MainApp
+    lateinit var presenter: RingfortListPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ringfort_list)
-
-        app = application as MainApp
-
         toolbar.title = title
         setSupportActionBar(toolbar)
 
@@ -32,9 +29,12 @@ class RingfortActivityList : AppCompatActivity(), RingfortListener {
 
         bottomNavigation.setOnNavigationItemSelectedListener(bottomListener)
 
+        presenter = RingfortListPresenter(this)
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        loadRingforts()
+        recyclerView.adapter =
+            RingfortAdapter(presenter.getRingforts(), this)
+        recyclerView.adapter?.notifyDataSetChanged()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -42,22 +42,17 @@ class RingfortActivityList : AppCompatActivity(), RingfortListener {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
-            R.id.item_add -> {
-                startActivityForResult<RingfortActivity>(0)
-            }
-            R.id.logout -> {
-                finish()
-                startActivity(Intent(this@RingfortActivityList, UserLogin::class.java))
-            }
-        }
 
-
-        return super.onOptionsItemSelected(item)
+    override fun onRingfortClick(ringfort: RingfortModel) {
+        presenter.doEditRingfort(ringfort)
     }
 
-    private val bottomListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        recyclerView.adapter?.notifyDataSetChanged()
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+
+        private val bottomListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.logoutBottom -> {
                 startActivity(Intent(this@RingfortActivityList, UserLogin::class.java))
@@ -81,23 +76,87 @@ class RingfortActivityList : AppCompatActivity(), RingfortListener {
         false
     }
 
-    override fun onRingfortClick(ringfort: RingfortModel) {
-
-        startActivityForResult(intentFor<RingfortActivity>().putExtra("ringfort_edit", ringfort), 0)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        loadRingforts()
-        super.onActivityResult(requestCode, resultCode, data)
-    }
-
-    private fun loadRingforts() {
-        showRingforts(app.ringforts.findAll())
-    }
-
-    fun showRingforts (ringforts : List<RingfortModel>) {
-        recyclerView.adapter = RingfortAdapter(ringforts, this)
-        recyclerView.adapter?.notifyDataSetChanged()
-    }
+//    lateinit var app: MainApp
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_ringfort_list)
+//
+//        app = application as MainApp
+//
+//        toolbar.title = title
+//        setSupportActionBar(toolbar)
+//
+//        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
+//
+//        bottomNavigation.setOnNavigationItemSelectedListener(bottomListener)
+//
+//        val layoutManager = LinearLayoutManager(this)
+//        recyclerView.layoutManager = layoutManager
+//        loadRingforts()
+//    }
+//
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.menu_main, menu)
+//        return super.onCreateOptionsMenu(menu)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+//        when (item?.itemId) {
+//            R.id.item_add -> {
+//                startActivityForResult<RingfortActivity>(0)
+//            }
+//            R.id.logout -> {
+//                finish()
+//                startActivity(Intent(this@RingfortActivityList, UserLogin::class.java))
+//            }
+//        }
+//
+//
+//        return super.onOptionsItemSelected(item)
+//    }
+//
+//    private val bottomListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+//        when (item.itemId) {
+//            R.id.logoutBottom -> {
+//                startActivity(Intent(this@RingfortActivityList, UserLogin::class.java))
+//                return@OnNavigationItemSelectedListener true
+//            }
+//            R.id.item_add -> {
+//                startActivityForResult<RingfortActivity>(0)
+//                return@OnNavigationItemSelectedListener true
+//            }
+//            R.id.settings_bottom -> {
+//                startActivity(Intent(this@RingfortActivityList, Settings::class.java))
+//                return@OnNavigationItemSelectedListener true
+//            }
+//            R.id.item_map -> {
+//                startActivity<RingfortAllMapsActivity>()
+//                return@OnNavigationItemSelectedListener  true
+//            }
+//
+//
+//        }
+//        false
+//    }
+//
+//    override fun onRingfortClick(ringfort: RingfortModel) {
+//
+//        startActivityForResult(intentFor<RingfortActivity>().putExtra("ringfort_edit", ringfort), 0)
+//    }
+//
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        loadRingforts()
+//        super.onActivityResult(requestCode, resultCode, data)
+//    }
+//
+//    private fun loadRingforts() {
+//        showRingforts(app.ringforts.findAll())
+//    }
+//
+//    fun showRingforts (ringforts : List<RingfortModel>) {
+//        recyclerView.adapter = RingfortAdapter(ringforts, this)
+//        recyclerView.adapter?.notifyDataSetChanged()
+//    }
 }
 
