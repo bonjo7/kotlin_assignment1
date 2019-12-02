@@ -13,28 +13,36 @@ import kotlinx.android.synthetic.main.activity_ringfort_list.*
 import models.RingfortModel
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
+import views.BaseView
 import views.map.RingfortMapView
 import views.ringfort.RingfortView
 
-class RingfortListView : AppCompatActivity(), RingfortListener {
+class RingfortListView : BaseView(), RingfortListener {
 
     lateinit var presenter: RingfortListPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ringfort_list)
-        toolbar.title = title
+//        toolbar.title = title
         setSupportActionBar(toolbar)
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
 
         bottomNavigation.setOnNavigationItemSelectedListener(bottomListener)
 
-        presenter = RingfortListPresenter(this)
+        presenter = initPresenter(RingfortListPresenter(this)) as RingfortListPresenter
+
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter =
-            RingfortAdapter(presenter.getRingforts(), this)
+//        recyclerView.adapter =
+//            RingfortAdapter(presenter.getRingforts(), this)
+//        recyclerView.adapter?.notifyDataSetChanged()
+        presenter.loadRingforts()
+    }
+
+     override fun showRingforts(ringforts: List<RingfortModel>) {
+        recyclerView.adapter = RingfortAdapter(ringforts, this)
         recyclerView.adapter?.notifyDataSetChanged()
     }
 
@@ -43,13 +51,12 @@ class RingfortListView : AppCompatActivity(), RingfortListener {
         return super.onCreateOptionsMenu(menu)
     }
 
-
     override fun onRingfortClick(ringfort: RingfortModel) {
         presenter.doEditRingfort(ringfort)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        recyclerView.adapter?.notifyDataSetChanged()
+        presenter.loadRingforts()
         super.onActivityResult(requestCode, resultCode, data)
     }
 

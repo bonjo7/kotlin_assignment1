@@ -12,10 +12,11 @@ import helpers.readImageFromPath
 import kotlinx.android.synthetic.main.activity_ringfort.*
 import models.RingfortModel
 import org.jetbrains.anko.*
+import views.BaseView
 import java.util.*
 
 
-class RingfortView : AppCompatActivity(), AnkoLogger {
+class RingfortView : BaseView(), AnkoLogger {
 
         val calender = Calendar.getInstance()
         val year = calender.get(Calendar.YEAR)
@@ -33,21 +34,6 @@ class RingfortView : AppCompatActivity(), AnkoLogger {
         setSupportActionBar(toolbarAdd)
 
         presenter = RingfortPresenter(this)
-
-        btnAdd.setOnClickListener {
-            if (ringfortName.text.toString().isEmpty()) {
-                toast(R.string.enter_ringfort_details)
-            } else {
-                presenter.doAddOrSave(ringfortName.text.toString(), ringfortDescription.text.toString(), visitedDateL.text.toString(), visitedL.isChecked )
-                info("Ringfort created with the details - " +
-                        "\nID: ${presenter.ringfort.id}" +
-                        "\nName: ${presenter.ringfort.name}" +
-                        "\nDesc: ${presenter.ringfort.description}" +
-                        "\n Lat: ${presenter.ringfort.lat}, Long: ${presenter.ringfort.lng}" +
-                        "\nVisted: ${ringfort.visited}" +
-                        "\nDate Visited: ${presenter.ringfort.visitedDate}")
-            }
-        }
 
         chooseImage.setOnClickListener {
             presenter.doSelectImage()
@@ -68,7 +54,7 @@ class RingfortView : AppCompatActivity(), AnkoLogger {
         }
     }
 
-    fun showRingfort(ringfort: RingfortModel) {
+    override fun showRingfort(ringfort: RingfortModel) {
         ringfortName.setText(ringfort.name)
         ringfortDescription.setText(ringfort.description)
         visitedL.isChecked
@@ -78,11 +64,6 @@ class RingfortView : AppCompatActivity(), AnkoLogger {
         if (ringfort.image != null) {
             chooseImage.setText(R.string.change_ringfort_image)
         }
-
-            ringfortLocation.setText("Change Location")
-            ringfortLocation.setBackgroundColor(getColor(R.color.orange))
-            btnAdd.setText(R.string.save_ringfort)
-            btnAdd.setBackgroundColor(getColor(R.color.orange))
     }
 
 
@@ -97,8 +78,19 @@ class RingfortView : AppCompatActivity(), AnkoLogger {
             R.id.item_delete -> {
                 presenter.doDelete()
             }
-            R.id.item_cancel -> {
-                presenter.doCancel()
+            R.id.item_save -> {
+                    if (ringfortName.text.toString().isEmpty()) {
+                    toast(R.string.enter_ringfort_details)
+                } else {
+                    presenter.doAddOrSave(ringfortName.text.toString(), ringfortDescription.text.toString(), visitedDateL.text.toString(), visitedL.isChecked )
+                    info("Ringfort created with the details - " +
+                         "\nID: ${presenter.ringfort.id}" +
+                         "\nName: ${presenter.ringfort.name}" +
+                         "\nDesc: ${presenter.ringfort.description}" +
+                         "\n Lat: ${presenter.ringfort.lat}, Long: ${presenter.ringfort.lng}" +
+                         "\nVisted: ${ringfort.visited}" +
+                         "\nDate Visited: ${presenter.ringfort.visitedDate}")
+                }
             }
             R.id.home -> {
                 onBackPressed()
@@ -113,9 +105,13 @@ class RingfortView : AppCompatActivity(), AnkoLogger {
         if (data != null) {
             presenter.doActivityResult(requestCode, resultCode, data)
         }
+
+
     }
 
-
+    override fun onBackPressed() {
+        presenter.doCancel()
+    }
 
 
 }
