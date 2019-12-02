@@ -1,6 +1,8 @@
 package views.map
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bernardthompson_assignment1.R
 import com.google.android.gms.maps.GoogleMap
@@ -9,6 +11,7 @@ import helpers.readImageFromPath
 import kotlinx.android.synthetic.main.activity_ringfort_list.*
 import kotlinx.android.synthetic.main.content_ringfort_all_maps.*
 import models.RingfortModel
+import views.ringfortlist.RingfortListView
 
 class RingfortMapView : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
 
@@ -18,12 +21,19 @@ class RingfortMapView : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ringfort_all_maps)
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         presenter = RingfortMapPresenter(this)
 
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync {
             presenter.doPopulateMap(it)
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        startActivity(Intent(this@RingfortMapView, RingfortListView::class.java))
+        return true
     }
 
     fun showPlacemark(ringfort: RingfortModel) {

@@ -8,7 +8,6 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bernardthompson_assignment1.R
-import com.example.bernardthompson_assignment1.RingfortAllMapsActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_ringfort_list.*
 import models.RingfortModel

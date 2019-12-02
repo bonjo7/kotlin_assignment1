@@ -70,18 +70,6 @@ class Settings : AppCompatActivity(), AnkoLogger {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
-
-            R.id.home -> {
-                onBackPressed()
-                true
-            }
-
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
     private val bottomListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.logoutBottom -> {
