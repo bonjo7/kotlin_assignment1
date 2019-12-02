@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".RingfortAllMapsActivity"
+            android:name="views.map.RingfortMapView"
             android:label="@string/title_activity_ringfort_all_maps"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity

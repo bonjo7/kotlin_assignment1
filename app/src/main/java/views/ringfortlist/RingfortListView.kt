@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_ringfort_list.*
 import models.RingfortModel
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
+import views.map.RingfortMapView
 import views.ringfort.RingfortView
 
 class RingfortListView : AppCompatActivity(), RingfortListener {
@@ -68,7 +69,7 @@ class RingfortListView : AppCompatActivity(), RingfortListener {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.item_map -> {
-                startActivity<RingfortAllMapsActivity>()
+                startActivity<RingfortMapView>()
                 return@OnNavigationItemSelectedListener  true
             }
 
