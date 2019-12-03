@@ -12,7 +12,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="enter_ringfort_details"> Please enter a Ringfort Name &amp; Description </string>
-    <string name="save_ringfort"> Save Changes </string>
+    <string name="save_ringfort"> Save </string>
     <string name="button_addImage"> Select Image </string>
     <string name="select_ringfort_image">Select Ringfort image</string>
     <string name="change_ringfort_image">Change image</string>

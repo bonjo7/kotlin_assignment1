@@ -33,100 +33,232 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <Button
+                android:id="@+id/chooseImage"
+                android:layout_width="379dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="19dp"
+                android:background="@color/colorAccent"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="@string/button_addImage"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ringfortDescription" />
+
             <EditText
                 android:id="@+id/ringfortDescription"
-                android:layout_width="380dp"
-                android:layout_height="52dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="15dp"
-                android:ems="10"
+                android:layout_width="249dp"
+                android:layout_height="62dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:hint="@string/ringfortDescription"
                 android:inputType="text"
+                android:maxLength="25"
+                android:maxLines="1"
+                android:padding="8dp"
                 android:textColor="@color/colorPrimaryDark"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/lat"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ringfortName" />
 
             <EditText
                 android:id="@+id/ringfortName"
-                android:layout_width="380dp"
-                android:layout_height="54dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="84dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="10dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:ems="10"
+                android:layout_width="392dp"
+                android:layout_height="47dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="72dp"
+                android:autofillHints=""
                 android:hint="@string/ringfortName"
-                android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/ringfortDescription"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:inputType="text"
+                android:maxLength="25"
+                android:maxLines="1"
+                android:padding="8dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <Button
-                android:id="@+id/chooseImage"
-                android:layout_width="175dp"
-                android:layout_height="46dp"
-                android:layout_marginStart="34dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/button_addImage"
-                app:layout_constraintStart_toEndOf="@+id/ringfortLocation"
-                app:layout_constraintTop_toBottomOf="@+id/ringfortDescription" />
+                <requestFocus />
+            </EditText>
+
+            <TextView
+                android:id="@+id/lat"
+                android:layout_width="95dp"
+                android:layout_height="19dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:text="00.000000"
+                android:textAlignment="textEnd"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ringfortName" />
+
+            <TextView
+                android:id="@+id/lng"
+                android:layout_width="92dp"
+                android:layout_height="19dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:text="00.000000"
+                android:textAlignment="textEnd"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lat" />
 
             <ImageView
                 android:id="@+id/ringfortImage"
-                android:layout_width="379dp"
-                android:layout_height="230dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/visitedL"
+                android:layout_width="396dp"
+                android:layout_height="110dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/chooseImage"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/ic_launcher_background" />
+                app:srcCompat="@mipmap/ic_launcher" />
 
-            <Button
-                android:id="@+id/ringfortLocation"
-                android:layout_width="169dp"
-                android:layout_height="44dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/button_location"
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView1"
+                android:layout_width="363dp"
+                android:layout_height="162dp"
+                android:layout_marginStart="180dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="181dp"
+                android:layout_marginBottom="152dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ringfortDescription" />
+                app:layout_constraintTop_toBottomOf="@+id/ringfortImage" />
 
             <TextView
                 android:id="@+id/visitedDateL"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_width="136dp"
+                android:layout_height="25dp"
                 android:layout_marginTop="8dp"
+                android:text="TextView"
+                app:layout_constraintTop_toBottomOf="@+id/visitedL"
                 android:ems="10"
                 android:hint="@string/hint_visitedDate"
                 android:inputType="date"
                 android:paddingLeft="0dp"
                 android:textColor="@color/colorPrimaryDark"
-                app:layout_constraintTop_toBottomOf="@+id/visitedL"
-                tools:layout_editor_absoluteX="17dp" />
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="24dp" />
 
             <CheckBox
                 android:id="@+id/visitedL"
-                android:layout_width="177dp"
-                android:layout_height="44dp"
-                android:layout_marginStart="16dp"
+                android:layout_width="122dp"
+                android:layout_height="36dp"
                 android:layout_marginTop="8dp"
-                android:hint="@string/hint_visited"
-                android:text="@string/check_title"
+                android:text="CheckBox"
                 android:textColor="@color/colorPrimaryDark"
                 android:theme="@style/MyCheckbox"
-                app:layout_constraintBottom_toBottomOf="@+id/ringfortImage"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ringfortImage" />
+                app:layout_constraintTop_toBottomOf="@+id/mapView1"
+                tools:layout_editor_absoluteX="24dp"
+                tools:ignore="MissingConstraints" />
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/ringfortDescription"-->
+            <!--                android:layout_width="380dp"-->
+            <!--                android:layout_height="52dp"-->
+            <!--                android:layout_marginStart="15dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:layout_marginEnd="15dp"-->
+            <!--                android:ems="10"-->
+            <!--                android:hint="@string/ringfortDescription"-->
+            <!--                android:inputType="text"-->
+            <!--                android:textColor="@color/colorPrimaryDark"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/ringfortName" />-->
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/ringfortName"-->
+            <!--                android:layout_width="380dp"-->
+            <!--                android:layout_height="54dp"-->
+            <!--                android:layout_marginStart="15dp"-->
+            <!--                android:layout_marginTop="84dp"-->
+            <!--                android:layout_marginEnd="15dp"-->
+            <!--                android:layout_marginBottom="10dp"-->
+            <!--                android:ems="10"-->
+            <!--                android:hint="@string/ringfortName"-->
+            <!--                android:inputType="textPersonName"-->
+            <!--                android:textColor="@color/colorPrimaryDark"-->
+            <!--                app:layout_constraintBottom_toTopOf="@+id/ringfortDescription"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+            <!--            <Button-->
+            <!--                android:id="@+id/chooseImage"-->
+            <!--                android:layout_width="175dp"-->
+            <!--                android:layout_height="46dp"-->
+            <!--                android:layout_marginStart="34dp"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                android:text="@string/button_addImage"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/ringfortLocation"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/ringfortDescription" />-->
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/ringfortImage"-->
+            <!--                android:layout_width="379dp"-->
+            <!--                android:layout_height="230dp"-->
+            <!--                android:layout_marginTop="8dp"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/ringfortLocation"-->
+            <!--                app:srcCompat="@drawable/ic_launcher_background"-->
+            <!--                tools:layout_editor_absoluteX="16dp" />-->
+
+            <!--            <Button-->
+            <!--                android:id="@+id/ringfortLocation"-->
+            <!--                android:layout_width="169dp"-->
+            <!--                android:layout_height="44dp"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                android:text="@string/button_location"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/ringfortDescription" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/visitedDateL"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_margin="8dp"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginTop="24dp"-->
+            <!--                android:ems="10"-->
+            <!--                android:hint="@string/hint_visitedDate"-->
+            <!--                android:inputType="date"-->
+            <!--                android:paddingLeft="0dp"-->
+            <!--                android:textColor="@color/colorPrimaryDark"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/visitedL"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/mapView1"-->
+            <!--                tools:ignore="MissingConstraints" />-->
+
+            <!--            <CheckBox-->
+            <!--                android:id="@+id/visitedL"-->
+            <!--                android:layout_width="177dp"-->
+            <!--                android:layout_height="44dp"-->
+            <!--                android:layout_marginTop="8dp"-->
+            <!--                android:hint="@string/hint_visited"-->
+            <!--                android:text="@string/check_title"-->
+            <!--                android:textColor="@color/colorPrimaryDark"-->
+            <!--                android:theme="@style/MyCheckbox"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/mapView1"-->
+            <!--                tools:layout_editor_absoluteX="16dp" />-->
+
+            <!--            <com.google.android.gms.maps.MapView-->
+            <!--                android:id="@+id/mapView1"-->
+            <!--                android:layout_width="363dp"-->
+            <!--                android:layout_height="162dp"-->
+            <!--                android:layout_marginTop="8dp"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/ringfortImage"-->
+            <!--                tools:ignore="MissingConstraints"-->
+            <!--                tools:layout_editor_absoluteX="24dp" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

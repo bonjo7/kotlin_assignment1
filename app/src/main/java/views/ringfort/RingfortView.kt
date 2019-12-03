@@ -7,9 +7,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.example.bernardthompson_assignment1.R
+import com.google.android.gms.maps.GoogleMap
 
 import helpers.readImageFromPath
 import kotlinx.android.synthetic.main.activity_ringfort.*
+import kotlinx.android.synthetic.main.content_ringfort_all_maps.*
 import models.RingfortModel
 import org.jetbrains.anko.*
 import views.BaseView
@@ -26,6 +28,7 @@ class RingfortView : BaseView(), AnkoLogger {
 
     lateinit var presenter: RingfortPresenter
     var ringfort = RingfortModel()
+    lateinit var map: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,12 +38,18 @@ class RingfortView : BaseView(), AnkoLogger {
 
         presenter = RingfortPresenter(this)
 
+        mapView1.onCreate(savedInstanceState);
+        mapView1.getMapAsync {
+            presenter.doConfigureMap(it)
+        }
+
         chooseImage.setOnClickListener {
             presenter.doSelectImage()
         }
 
-        ringfortLocation.setOnClickListener {
-            presenter.doSetLocation()
+        mapView1.getMapAsync {
+            presenter.doConfigureMap(it)
+            it.setOnMapClickListener { presenter.doSetLocation() }
         }
 
         visitedDateL.setOnClickListener {
@@ -52,6 +61,7 @@ class RingfortView : BaseView(), AnkoLogger {
             datepicker.show()
 
         }
+
     }
 
     override fun showRingfort(ringfort: RingfortModel) {
@@ -64,12 +74,14 @@ class RingfortView : BaseView(), AnkoLogger {
         if (ringfort.image != null) {
             chooseImage.setText(R.string.change_ringfort_image)
         }
+        lat.setText("%.6f".format(ringfort.lat))
+        lng.setText("%.6f".format(ringfort.lng))
     }
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_ringfort, menu)
-        if (presenter.edit && menu != null) menu.getItem(1).setVisible(true)
+//        if (presenter.edit && menu != null) menu.getItem(1).setVisible(true)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -111,6 +123,33 @@ class RingfortView : BaseView(), AnkoLogger {
 
     override fun onBackPressed() {
         presenter.doCancel()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView1.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView1.onLowMemory()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapView1.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView1.onResume()
+        presenter.doResartLocationUpdates()
+
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        mapView1.onSaveInstanceState(outState)
     }
 
 
