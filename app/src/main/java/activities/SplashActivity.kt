@@ -7,6 +7,7 @@ import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bernardthompson_assignment1.R
+import views.ringfortlist.RingfortListView
 
 class SplashActivity : AppCompatActivity() {
 
@@ -21,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
         //4second splash time
         Handler().postDelayed({
             //start main activity
-            startActivity(Intent(this@SplashActivity, UserLogin::class.java))
+            startActivity(Intent(this@SplashActivity, RingfortListView::class.java))
             //finish this activity
             finish()
         },4000)
