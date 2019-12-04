@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/green_bg"
     tools:context="activities.SplashActivity">
 
     <TextView
@@ -16,16 +16,22 @@
         android:textColor="#fff"
         android:textSize="30sp"
         android:textStyle="bold" />
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:src="@drawable/ringfort"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Loading"
-        android:textColor="#fff"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+    <!--    <ImageView-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_height="250dp"-->
+<!--        android:src="@drawable/ringfort"/>-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/Loading"-->
+<!--        android:textColor="#fff"-->
+<!--        android:textSize="30sp"-->
+<!--        android:textStyle="bold" />-->
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

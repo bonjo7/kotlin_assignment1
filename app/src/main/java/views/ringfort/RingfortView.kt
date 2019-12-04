@@ -33,8 +33,7 @@ class RingfortView : BaseView(), AnkoLogger {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ringfort)
-        toolbarAdd.title = title
-        setSupportActionBar(toolbarAdd)
+        super.init(toolbar, true)
 
         presenter = RingfortPresenter(this)
 

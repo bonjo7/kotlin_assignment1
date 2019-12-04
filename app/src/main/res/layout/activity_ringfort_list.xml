@@ -18,7 +18,8 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:titleTextColor="@color/colorAccent" />
+            app:titleTextColor="@color/colorAccent"
+            android:background="@color/colorPrimary"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -37,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_alignBottom="@id/recyclerView"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimary"
         app:itemIconTint="@color/colorAccent"
         app:itemTextColor="@color/colorAccent"
         app:menu="@menu/bottom_nav_menu" />

@@ -11,7 +11,7 @@ import models.Location
 import views.BasePresenter
 import views.BaseView
 
-class MapPresenter(view: BaseView) : BasePresenter(view) {
+class EditLocationPresenter(view: BaseView) : BasePresenter(view) {
 
     var location = Location()
 

@@ -24,8 +24,7 @@ class RingfortListView : BaseView(), RingfortListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ringfort_list)
-//        toolbar.title = title
-        setSupportActionBar(toolbar)
+        super.init(toolbar, true)
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
 
