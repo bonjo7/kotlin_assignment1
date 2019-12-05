@@ -1,5 +1,6 @@
 package views.ringfortlist
 
+import com.google.firebase.auth.FirebaseAuth
 import main.MainApp
 import models.RingfortModel
 import org.jetbrains.anko.doAsync
@@ -11,16 +12,6 @@ import views.VIEW
 import views.ringfort.RingfortView
 
 class RingfortListPresenter(view: BaseView) : BasePresenter(view) {
-
-//    fun getRingforts() = app.ringforts.findAll()
-//
-//    fun doEditRingfort(ringfort: RingfortModel) {
-//        view.startActivityForResult(view.intentFor<RingfortView>().putExtra("ringfort_edit", ringfort), 0)
-//    }
-
-//    fun doShowRingfortssMap() {
-//        view.startActivity<EditLocationView>()
-//    }
 
     fun doAddRingfort() {
         view?.navigateTo(VIEW.RINGFORT)
@@ -44,6 +35,7 @@ class RingfortListPresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun doLogout() {
+        FirebaseAuth.getInstance().signOut()
         view?.navigateTo(VIEW.LOGIN)
     }
 

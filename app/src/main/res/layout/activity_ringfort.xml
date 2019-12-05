@@ -59,23 +59,25 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:hint="@string/ringfortDescription"
+
                 android:inputType="text"
                 android:maxLength="25"
                 android:maxLines="1"
                 android:padding="8dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="14sp"
+                android:backgroundTint="@color/colorPrimary"
                 app:layout_constraintEnd_toStartOf="@+id/lat"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ringfortName" />
 
             <EditText
                 android:id="@+id/ringfortName"
-                android:layout_width="392dp"
-                android:layout_height="47dp"
-                android:layout_marginStart="8dp"
+                android:layout_width="249dp"
+                android:layout_height="62dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="72dp"
-                android:autofillHints=""
+                android:backgroundTint="@color/colorPrimary"
                 android:hint="@string/ringfortName"
                 android:inputType="text"
                 android:maxLength="25"
@@ -96,6 +98,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 android:text="00.000000"
+                android:textColor="@color/colorPrimaryDark"
                 android:textAlignment="textEnd"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ringfortName" />
@@ -107,6 +110,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 android:text="00.000000"
+                android:textColor="@color/colorPrimaryDark"
                 android:textAlignment="textEnd"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lat" />
@@ -139,30 +143,46 @@
 
             <TextView
                 android:id="@+id/visitedDateL"
-                android:layout_width="136dp"
-                android:layout_height="25dp"
+                android:drawableLeft="@drawable/date"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="TextView"
+                android:text="Select a date you visited"
                 app:layout_constraintTop_toBottomOf="@+id/visitedL"
                 android:ems="10"
                 android:hint="@string/hint_visitedDate"
                 android:inputType="date"
-                android:paddingLeft="0dp"
+                android:layout_marginLeft="20dp"
                 android:textColor="@color/colorPrimaryDark"
                 tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="24dp" />
+                tools:layout_editor_absoluteX="96dp"
+                android:drawablePadding="10dp"/>
+
+<!--            <CheckBox-->
+<!--                android:id="@+id/visitedL"-->
+<!--                android:layout_width="122dp"-->
+<!--                android:layout_height="36dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:text="CheckBox"-->
+<!--                android:textColor="@color/colorPrimaryDark"-->
+<!--                android:theme="@style/MyCheckbox"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/mapView1"-->
+<!--                tools:layout_editor_absoluteX="24dp"-->
+<!--                tools:ignore="MissingConstraints" />-->
 
             <CheckBox
                 android:id="@+id/visitedL"
-                android:layout_width="122dp"
-                android:layout_height="36dp"
+                android:paddingLeft="16dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="CheckBox"
-                android:textColor="@color/colorPrimaryDark"
-                android:theme="@style/MyCheckbox"
+                android:layout_marginLeft="16dp"
+                android:text="Have you visited this ringfort?"
                 app:layout_constraintTop_toBottomOf="@+id/mapView1"
-                tools:layout_editor_absoluteX="24dp"
-                tools:ignore="MissingConstraints" />
+                tools:layout_editor_absoluteX="96dp"
+                android:textColor="@color/colorPrimaryDark"
+                tools:ignore="MissingConstraints"
+                android:theme="@style/MyCheckbox"/>
 
             <!--            <EditText-->
             <!--                android:id="@+id/ringfortDescription"-->

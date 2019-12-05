@@ -2,7 +2,6 @@ package views.ringfort
 
 import android.annotation.SuppressLint
 import helpers.showImagePicker
-import main.MainApp
 import models.Location
 import models.RingfortModel
 import android.content.Intent
@@ -18,8 +17,6 @@ import helpers.checkLocationPermissions
 import helpers.createDefaultLocationRequest
 import helpers.isPermissionGranted
 import org.jetbrains.anko.doAsync
-import views.editLocation.EditLocationView
-import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.uiThread
 import views.*
 

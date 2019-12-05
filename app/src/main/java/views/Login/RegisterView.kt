@@ -36,6 +36,7 @@ class RegisterView : BaseView() {
 
         btnRegister.setOnClickListener {
 
+            val name = username.text.toString()
             val email = useremail.text.toString()
             val password = userpassword.text.toString()
 

@@ -1,20 +1,14 @@
-package activities
+package views.splash
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.view.View
 import android.view.Window
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
 import com.example.bernardthompson_assignment1.R
-import kotlinx.android.synthetic.main.activity_splash.*
-import views.Login.LoginView
-import views.ringfortlist.RingfortListView
+import views.BaseView
+import views.VIEW
 
-class SplashActivity : AppCompatActivity() {
-
-
+class SplashView : BaseView() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -28,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
         //4second splash time
         Handler().postDelayed({
             //start main activity
-            startActivity(Intent(this@SplashActivity, LoginView::class.java))
+            navigateTo(VIEW.RINGFORT)
             //finish this activity
             finish()
         },4000)
