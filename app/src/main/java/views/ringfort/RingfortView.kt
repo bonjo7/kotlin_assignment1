@@ -12,6 +12,7 @@ import com.google.android.gms.maps.GoogleMap
 import helpers.readImageFromPath
 import kotlinx.android.synthetic.main.activity_ringfort.*
 import kotlinx.android.synthetic.main.content_ringfort_all_maps.*
+import models.Location
 import models.RingfortModel
 import org.jetbrains.anko.*
 import views.BaseView
@@ -25,7 +26,7 @@ class RingfortView : BaseView(), AnkoLogger {
         val month = calender.get(Calendar.MONTH)
         val day = calender.get(Calendar.DAY_OF_MONTH)
 
-
+    lateinit var location: Location
     lateinit var presenter: RingfortPresenter
     var ringfort = RingfortModel()
     lateinit var map: GoogleMap
@@ -73,18 +74,23 @@ class RingfortView : BaseView(), AnkoLogger {
         if (ringfort.image != null) {
             chooseImage.setText(R.string.change_ringfort_image)
         }
-        lat.setText("%.6f".format(ringfort.lat))
-        lng.setText("%.6f".format(ringfort.lng))
+        this.showLocation(ringfort.location)
+    }
+
+    override fun showLocation(location: Location) {
+        lat.setText("%.6f".format(location.lat))
+        lng.setText("%.6f".format(location.lng))
     }
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_ringfort, menu)
-//        if (presenter.edit && menu != null) menu.getItem(1).setVisible(true)
+        if (presenter.edit && menu != null) menu.getItem(1).setVisible(true)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
         when (item?.itemId) {
             R.id.item_delete -> {
                 presenter.doDelete()
@@ -98,7 +104,7 @@ class RingfortView : BaseView(), AnkoLogger {
                          "\nID: ${presenter.ringfort.id}" +
                          "\nName: ${presenter.ringfort.name}" +
                          "\nDesc: ${presenter.ringfort.description}" +
-                         "\n Lat: ${presenter.ringfort.lat}, Long: ${presenter.ringfort.lng}" +
+                         "\n Lat: ${location.lat}, Long: ${location.lng}" +
                          "\nVisted: ${ringfort.visited}" +
                          "\nDate Visited: ${presenter.ringfort.visitedDate}")
                 }

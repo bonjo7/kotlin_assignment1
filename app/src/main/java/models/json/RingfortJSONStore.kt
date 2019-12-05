@@ -1,4 +1,4 @@
-package models
+package models.json
 
 import android.content.Context
 import com.google.gson.Gson
@@ -7,6 +7,8 @@ import com.google.gson.reflect.TypeToken
 import helpers.exists
 import helpers.read
 import helpers.write
+import models.RingfortModel
+import models.RingfortStore
 import org.jetbrains.anko.AnkoLogger
 import java.util.*
 
@@ -56,9 +58,7 @@ class RingfortJSONStore : RingfortStore, AnkoLogger {
             foundRingfort.name = ringfort.name
             foundRingfort.description = ringfort.description
             foundRingfort.image = ringfort.image
-            foundRingfort.lat = ringfort.lat
-            foundRingfort.lng = ringfort.lng
-            foundRingfort.zoom = ringfort.zoom
+            foundRingfort.location = ringfort.location
             foundRingfort.visited = ringfort.visited
             foundRingfort.visitedDate = ringfort.visitedDate
         }

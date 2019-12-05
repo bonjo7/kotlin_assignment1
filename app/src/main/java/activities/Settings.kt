@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_settings.*
 import main.MainApp
 import models.UserModel
 import org.jetbrains.anko.*
+import views.Login.LoginView
 import views.ringfort.RingfortView
 import views.ringfortlist.RingfortListView
 
@@ -71,7 +72,7 @@ class Settings : AppCompatActivity(), AnkoLogger {
     private val bottomListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.logoutBottom -> {
-                startActivity(Intent(this@Settings, UserLogin::class.java))
+                startActivity(Intent(this@Settings, LoginView::class.java))
                 return@OnNavigationItemSelectedListener true
                 finish()
             }

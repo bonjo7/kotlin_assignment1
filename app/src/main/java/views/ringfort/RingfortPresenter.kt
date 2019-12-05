@@ -17,8 +17,10 @@ import com.google.android.gms.maps.model.MarkerOptions
 import helpers.checkLocationPermissions
 import helpers.createDefaultLocationRequest
 import helpers.isPermissionGranted
+import org.jetbrains.anko.doAsync
 import views.editLocation.EditLocationView
 import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.uiThread
 import views.*
 
 class RingfortPresenter (view: BaseView) : BasePresenter(view) {
@@ -51,7 +53,7 @@ class RingfortPresenter (view: BaseView) : BasePresenter(view) {
     @SuppressLint("MissingPermission")
     fun doSetCurrentLocation() {
         locationService.lastLocation.addOnSuccessListener {
-            locationUpdate(it.latitude, it.longitude)
+            locationUpdate(Location(it.latitude, it.longitude))
         }
     }
 
@@ -63,44 +65,42 @@ class RingfortPresenter (view: BaseView) : BasePresenter(view) {
             if (isPermissionGranted(requestCode, grantResults)) {
                 doSetCurrentLocation()
             } else {
-                locationUpdate(defaultLocation.lat, defaultLocation.lng)
+                locationUpdate(defaultLocation)
             }
         }
 
         fun doConfigureMap(m: GoogleMap) {
             map = m
-            locationUpdate(ringfort.lat, ringfort.lng)
+            locationUpdate(ringfort.location)
         }
 
-    fun locationUpdate(lat: Double, lng: Double) {
-        ringfort.lat = lat
-        ringfort.lng = lng
-        ringfort.zoom = 15f
+    fun locationUpdate(location: Location) {
+        ringfort.location = location
+        ringfort.location.zoom = 15f
         map?.clear()
-        map?.uiSettings?.setZoomControlsEnabled(true)
-        val options = MarkerOptions().title(ringfort.name).position(LatLng(ringfort.lat, ringfort.lng))
+        val options = MarkerOptions().title(ringfort.name).position(LatLng(ringfort.location.lat, ringfort.location.lng))
         map?.addMarker(options)
-        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(ringfort.lat, ringfort.lng), ringfort.zoom))
-        view?.showRingfort(ringfort)
+        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(ringfort.location.lat, ringfort.location.lng), ringfort.location.zoom))
+        view?.showLocation(ringfort.location)
     }
 
-        fun doAddOrSave(
-            title: String,
-            description: String,
-            visitedDateL: String,
-            visitedL: Boolean
-        ) {
-            ringfort.name = title
-            ringfort.description = description
-            ringfort.visited = visitedL
-            ringfort.visitedDate = visitedDateL
+
+    fun doAddOrSave(name: String, description: String, visitedDateL: String, visitedL: Boolean) {
+        ringfort.name = name
+        ringfort.description = description
+        ringfort.visitedDate = visitedDateL
+        ringfort.visited = visitedL
+        doAsync {
             if (edit) {
                 app.ringforts.update(ringfort)
             } else {
                 app.ringforts.create(ringfort)
             }
-            view?.finish()
+            uiThread {
+                view?.finish()
+            }
         }
+    }
 
         fun doCancel() {
             view?.finish()
@@ -122,7 +122,7 @@ class RingfortPresenter (view: BaseView) : BasePresenter(view) {
                 VIEW.LOCATION,
                 LOCATION_REQUEST,
                 "location",
-                Location(ringfort.lat, ringfort.lng, ringfort.zoom)
+                Location(ringfort.location.lat, ringfort.location.lng, ringfort.location.zoom)
             )
 
         }
@@ -135,10 +135,8 @@ class RingfortPresenter (view: BaseView) : BasePresenter(view) {
                 }
                 LOCATION_REQUEST -> {
                     val location = data.extras?.getParcelable<Location>("location")!!
-                    ringfort.lat = location.lat
-                    ringfort.lng = location.lng
-                    ringfort.zoom = location.zoom
-                    locationUpdate(ringfort.lat, ringfort.lng)
+                    ringfort.location = location
+                    locationUpdate(location)
                 }
             }
         }
@@ -149,7 +147,7 @@ class RingfortPresenter (view: BaseView) : BasePresenter(view) {
             override fun onLocationResult(locationResult: LocationResult?) {
                 if (locationResult != null && locationResult.locations != null) {
                     val l = locationResult.locations.last()
-                    locationUpdate(l.latitude, l.longitude)
+                    locationUpdate(Location(l.latitude, l.longitude))
                 }
             }
         }

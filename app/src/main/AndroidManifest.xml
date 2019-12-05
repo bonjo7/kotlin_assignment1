@@ -53,9 +53,9 @@
                 android:value="views.ringfortlist.RingfortListView" />
         </activity>
 
-        <activity android:name="activities.UserLogin" />
+        <activity android:name="views.Login.LoginView" />
 
-        <activity android:name="activities.UserRegister" />
+        <activity android:name="views.Login.RegisterView" />
 
         <activity android:name="activities.Settings" />
 

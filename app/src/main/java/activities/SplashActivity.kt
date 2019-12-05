@@ -9,6 +9,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bernardthompson_assignment1.R
 import kotlinx.android.synthetic.main.activity_splash.*
+import views.Login.LoginView
 import views.ringfortlist.RingfortListView
 
 class SplashActivity : AppCompatActivity() {
@@ -16,8 +17,6 @@ class SplashActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
 
         super.onCreate(savedInstanceState)
         //hiding title bar of this activity
@@ -29,7 +28,7 @@ class SplashActivity : AppCompatActivity() {
         //4second splash time
         Handler().postDelayed({
             //start main activity
-            startActivity(Intent(this@SplashActivity, RingfortListView::class.java))
+            startActivity(Intent(this@SplashActivity, LoginView::class.java))
             //finish this activity
             finish()
         },4000)

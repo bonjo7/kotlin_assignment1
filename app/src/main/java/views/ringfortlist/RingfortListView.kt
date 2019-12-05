@@ -1,11 +1,10 @@
 package views.ringfortlist
 
 import activities.Settings
-import activities.UserLogin
+import views.Login.LoginView
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bernardthompson_assignment1.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -34,9 +33,6 @@ class RingfortListView : BaseView(), RingfortListener {
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-//        recyclerView.adapter =
-//            RingfortAdapter(presenter.getRingforts(), this)
-//        recyclerView.adapter?.notifyDataSetChanged()
         presenter.loadRingforts()
     }
 
@@ -61,24 +57,10 @@ class RingfortListView : BaseView(), RingfortListener {
 
         private val bottomListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.logoutBottom -> {
-                startActivity(Intent(this@RingfortListView, UserLogin::class.java))
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.item_add -> {
-                startActivityForResult<RingfortView>(0)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.settings_bottom -> {
-                startActivity(Intent(this@RingfortListView, Settings::class.java))
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.item_map -> {
-                startActivity<RingfortMapView>()
-                return@OnNavigationItemSelectedListener  true
-            }
-
-
+            R.id.logoutBottom -> presenter.doLogout()
+            R.id.item_add -> presenter.doAddRingfort()
+            R.id.settings_bottom -> presenter.doSettings()
+            R.id.item_map -> presenter.doShowRingfortsMap()
         }
         false
     }
@@ -115,7 +97,7 @@ class RingfortListView : BaseView(), RingfortListener {
 //            }
 //            R.id.logout -> {
 //                finish()
-//                startActivity(Intent(this@RingfortListView, UserLogin::class.java))
+//                startActivity(Intent(this@RingfortListView, LoginView::class.java))
 //            }
 //        }
 //
@@ -126,7 +108,7 @@ class RingfortListView : BaseView(), RingfortListener {
 //    private val bottomListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
 //        when (item.itemId) {
 //            R.id.logoutBottom -> {
-//                startActivity(Intent(this@RingfortListView, UserLogin::class.java))
+//                startActivity(Intent(this@RingfortListView, LoginView::class.java))
 //                return@OnNavigationItemSelectedListener true
 //            }
 //            R.id.item_add -> {

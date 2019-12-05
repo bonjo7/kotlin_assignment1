@@ -1,11 +1,15 @@
 package views
 
+import activities.Settings
 import android.content.Intent
+import android.media.audiofx.BassBoost
 import android.os.Parcelable
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
+import models.Location
 import models.RingfortModel
 import org.jetbrains.anko.AnkoLogger
+import views.Login.LoginView
 import views.editLocation.EditLocationView
 import views.map.RingfortMapView
 import views.ringfort.RingfortView
@@ -15,7 +19,7 @@ val IMAGE_REQUEST = 1
 val LOCATION_REQUEST = 2
 
 enum class VIEW {
-    LOCATION, RINGFORT, MAPS, LIST
+    LOCATION, RINGFORT, MAPS, LIST, LOGIN, SETTINGS
 }
 
 open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
@@ -29,6 +33,8 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
             VIEW.RINGFORT -> intent = Intent(this, RingfortView::class.java)
             VIEW.MAPS -> intent = Intent(this, RingfortMapView::class.java)
             VIEW.LIST -> intent = Intent(this, RingfortListView::class.java)
+            VIEW.LOGIN -> intent = Intent(this, LoginView::class.java)
+            VIEW.SETTINGS -> intent = Intent(this, Settings::class.java)
         }
         if (key != "") {
             intent.putExtra(key, value)
@@ -66,6 +72,7 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
 
     open fun showRingfort(ringfort: RingfortModel) {}
     open fun showRingforts(ringforts: List<RingfortModel>) {}
+    open fun showLocation(location : Location) {}
     open fun showProgress() {}
     open fun hideProgress() {}
 }

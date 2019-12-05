@@ -1,16 +1,19 @@
 package models
 
 import android.os.Parcelable
+import androidx.room.Embedded
 import kotlinx.android.parcel.Parcelize
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Parcelize
-data class RingfortModel(var id: Long = 0,
+@Entity
+data class RingfortModel(@PrimaryKey(autoGenerate = true) var id: Long = 0,
                          var name: String = "",
                          var description: String = "",
                          var image: String = "",
-                         var lat : Double = 0.0,
-                         var lng: Double = 0.0,
-                         var zoom: Float = 0f,
+                         @Embedded var location : Location = Location(),
+//                         var zoom: Float = 0f,
                          var user: Long = 0,
                          var visited: Boolean = false,
                          var visitedDate: String = ""

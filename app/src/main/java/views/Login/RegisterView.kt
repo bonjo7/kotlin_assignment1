@@ -1,25 +1,23 @@
-package activities
+package views.Login
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bernardthompson_assignment1.R
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 import main.MainApp
 import models.UserModel
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
+import views.BaseView
 
-class UserRegister : AppCompatActivity(), AnkoLogger {
+class RegisterView : BaseView() {
 
-    lateinit var app: MainApp
+    lateinit var presenter: LoginPresenter
 
     var user = UserModel()
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,31 +25,25 @@ class UserRegister : AppCompatActivity(), AnkoLogger {
 
         info("Register activity started")
 
-        app = application as MainApp
+        presenter = initPresenter(LoginPresenter(this)) as LoginPresenter
 
         tvlogin.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                startActivity(Intent(this@UserRegister, UserLogin::class.java))
+                startActivity(Intent(this@RegisterView, LoginView::class.java))
                 info("TextView tvlogin clicked\nRedirecting to login page")
             }
         })
 
         btnRegister.setOnClickListener {
 
-            user.userName = username.text.toString()
-            user.userEmail = useremail.text.toString()
-            user.userPassword = userpassword.text.toString()
+            val email = useremail.text.toString()
+            val password = userpassword.text.toString()
 
-            if(user.userEmail.isEmpty() && user.userPassword.isEmpty()){
+            if(email.isEmpty() && password.isEmpty()){
                 toast(R.string.Userdetails)
             }else{
-                app.users.create(user.copy())
-                toast("Redirecting to login page....")
-                info("Registered user\n" +
-                        "Name: ${user.userName}\n" +
-                        "Email: ${user.userEmail}\n")
-
-                startActivity(Intent(this@UserRegister, UserLogin::class.java))
+                presenter.doSignUp(email, password)
+                startActivity(Intent(this@RegisterView, LoginView::class.java))
 
 
             }
