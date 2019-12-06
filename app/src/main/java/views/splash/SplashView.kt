@@ -2,9 +2,11 @@ package views.splash
 
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import com.example.bernardthompson_assignment1.R
+import kotlinx.android.synthetic.main.activity_login.*
 import views.BaseView
 import views.VIEW
 
@@ -22,7 +24,7 @@ class SplashView : BaseView() {
         //4second splash time
         Handler().postDelayed({
             //start main activity
-            navigateTo(VIEW.RINGFORT)
+            navigateTo(VIEW.LOGIN)
             //finish this activity
             finish()
         },4000)
