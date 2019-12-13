@@ -11,6 +11,9 @@ interface RingfortDao {
 
     @Query("SELECT * FROM RingfortModel")
     fun findAll(): List<RingfortModel>
+    
+//    @Query( "SELECT : FROM RingfortModel : WHERE favoutire = true")
+//    fun findFav(): List<RingfortModel>
 
     @Query("select * from RingfortModel where id = :id")
     fun findById(id: Long): RingfortModel

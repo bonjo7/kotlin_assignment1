@@ -47,9 +47,9 @@ class RingfortJSONStore : RingfortStore, AnkoLogger {
         return foundPlacemark
     }
 
-    override fun findUserRingforts(userId: Long): List<RingfortModel> {
-        return ringforts.filter { it.user == userId }
-    }
+//    override fun findUserRingforts(userId: Long): List<RingfortModel> {
+//        return ringforts.filter { it.user == userId }
+//    }
 
 
     override fun update(ringfort: RingfortModel) {
@@ -78,5 +78,9 @@ class RingfortJSONStore : RingfortStore, AnkoLogger {
     override fun delete(ringfort: RingfortModel){
         ringforts.remove(ringfort)
         serialize()
+    }
+
+    override fun clear() {
+        ringforts.clear()
     }
 }

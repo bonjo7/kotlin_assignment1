@@ -26,7 +26,8 @@ class RingfortView : BaseView(), AnkoLogger {
         val month = calender.get(Calendar.MONTH)
         val day = calender.get(Calendar.DAY_OF_MONTH)
 
-    lateinit var location: Location
+//    lateinit var location: Location
+    var location = Location()
     lateinit var presenter: RingfortPresenter
     var ringfort = RingfortModel()
     lateinit var map: GoogleMap

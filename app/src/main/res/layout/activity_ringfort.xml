@@ -59,8 +59,8 @@
                 android:layout_height="62dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
-                android:hint="@string/ringfortDescription"
                 android:backgroundTint="@color/colorPrimary"
+                android:hint="@string/ringfortDescription"
                 android:inputType="text"
                 android:maxLength="25"
                 android:maxLines="1"
@@ -98,8 +98,8 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 android:text="00.000000"
-                android:textColor="@color/colorPrimaryDark"
                 android:textAlignment="textEnd"
+                android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ringfortName" />
 
@@ -110,8 +110,8 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 android:text="00.000000"
-                android:textColor="@color/colorPrimaryDark"
                 android:textAlignment="textEnd"
+                android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lat" />
 
@@ -143,34 +143,60 @@
 
             <TextView
                 android:id="@+id/visitedDateL"
-                android:drawableLeft="@drawable/date"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
-                android:text="Select a date you visited"
-                app:layout_constraintTop_toBottomOf="@+id/visitedL"
+                android:drawableLeft="@drawable/date"
+                android:drawablePadding="10dp"
                 android:ems="10"
                 android:hint="@string/hint_visitedDate"
                 android:inputType="date"
-                android:layout_marginLeft="20dp"
+                android:text="Select a date you visited"
                 android:textColor="@color/colorPrimaryDark"
+                app:layout_constraintTop_toBottomOf="@+id/visitedL"
                 tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="96dp"
-                android:drawablePadding="10dp"/>
+                tools:layout_editor_absoluteX="96dp" />
 
             <CheckBox
                 android:id="@+id/visitedL"
-                android:paddingLeft="6dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:paddingLeft="6dp"
                 android:text="Have you visited this ringfort?"
-                app:layout_constraintTop_toBottomOf="@+id/mapView1"
-                tools:layout_editor_absoluteX="96dp"
                 android:textColor="@color/colorPrimaryDark"
+                android:theme="@style/MyCheckbox"
+                app:layout_constraintTop_toBottomOf="@+id/mapView1"
                 tools:ignore="MissingConstraints"
-                android:theme="@style/MyCheckbox"/>
+                tools:layout_editor_absoluteX="96dp" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="@style/Widget.AppCompat.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/visitedDateL" />
+
+            <ToggleButton
+                android:id="@+id/toggleButton2"
+                android:layout_width="44dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="72dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/heart"
+                android:checked="false"
+                android:text=""
+                android:textOff=""
+                android:textOn=""
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ringfortName"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

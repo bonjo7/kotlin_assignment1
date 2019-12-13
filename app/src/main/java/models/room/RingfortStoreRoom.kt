@@ -36,7 +36,11 @@ class RingfortStoreRoom (val context: Context) : RingfortStore {
         dao.deleteRingfort(ringfort)
     }
 
-    override fun findUserRingforts(userId: Long): List<RingfortModel> {
-        TODO("not implemented")
+//    override fun findUserRingforts(userId: Long): List<RingfortModel> {
+//        TODO("not implemented")
+//    }
+
+    override fun clear() {
+
     }
 }

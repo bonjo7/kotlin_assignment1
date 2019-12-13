@@ -17,8 +17,9 @@ class MainApp : Application(), AnkoLogger {
 
     override fun onCreate() {
         super.onCreate()
-        ringforts = RingfortStoreRoom(applicationContext)
-        users = UserJSONStore(applicationContext)
+//        ringforts = RingfortStoreRoom(applicationContext)
+//        users = UserJSONStore(applicationContext)
+        ringforts= RingfortFireStore(applicationContext)
         info("Archaeological Field Work App Started")
     }
 }
