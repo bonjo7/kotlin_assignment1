@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.example.bernardthompson_assignment1.R
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
@@ -37,7 +38,8 @@ class RingfortMapView : BaseView(), GoogleMap.OnMarkerClickListener {
     override fun showRingfort(ringfort: RingfortModel) {
         currentTitle.text = ringfort.name
         currentDescription.text = ringfort.description
-        currentImage.setImageBitmap(readImageFromPath(this, ringfort.image))
+//        currentImage.setImageBitmap(readImageFromPath(this, ringfort.image))
+        Glide.with(this).load(ringfort.image).into(currentImage);
     }
 
     override fun showRingforts(ringforts: List<RingfortModel>) {

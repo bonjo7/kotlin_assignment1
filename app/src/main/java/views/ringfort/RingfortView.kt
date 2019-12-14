@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.bumptech.glide.Glide
 import com.example.bernardthompson_assignment1.R
 import com.google.android.gms.maps.GoogleMap
 
@@ -70,7 +71,8 @@ class RingfortView : BaseView(), AnkoLogger {
         ringfortDescription.setText(ringfort.description)
         visitedL.isChecked
         visitedDateL.setText(ringfort.visitedDate)
-        ringfortImage.setImageBitmap(readImageFromPath(this, ringfort.image))
+//        ringfortImage.setImageBitmap(readImageFromPath(this, ringfort.image))
+        Glide.with(this).load(ringfort.image).into(ringfortImage);
 
         if (ringfort.image != null) {
             chooseImage.setText(R.string.change_ringfort_image)
