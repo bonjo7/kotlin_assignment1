@@ -45,6 +45,8 @@ class RingfortFireStore(val context: Context) : RingfortStore, AnkoLogger {
             foundRingfort.location = ringfort.location
             foundRingfort.visited = ringfort.visited
             foundRingfort.visitedDate = ringfort.visitedDate
+            foundRingfort.favourite = ringfort.favourite
+            foundRingfort.rating = ringfort.rating
         }
 
         db.child("users").child(userId).child("ringforts").child(ringfort.fbId).setValue(ringfort)

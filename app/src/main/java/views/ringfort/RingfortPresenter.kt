@@ -82,11 +82,13 @@ class RingfortPresenter (view: BaseView) : BasePresenter(view) {
     }
 
 
-    fun doAddOrSave(name: String, description: String, visitedDateL: String, visitedL: Boolean) {
+    fun doAddOrSave(name: String, description: String, visitedDateL: String, visitedL: Boolean, favourite: Boolean, rating: Float) {
         ringfort.name = name
         ringfort.description = description
         ringfort.visitedDate = visitedDateL
         ringfort.visited = visitedL
+        ringfort.favourite = favourite
+        ringfort.rating = rating
         doAsync {
             if (edit) {
                 app.ringforts.update(ringfort)

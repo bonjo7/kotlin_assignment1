@@ -54,6 +54,19 @@ class RingfortView : BaseView(), AnkoLogger {
             it.setOnMapClickListener { presenter.doSetLocation() }
         }
 
+        toggleButton2.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked){
+                    toggleButton2.setBackgroundResource(R.drawable.favourite)
+            }else {
+                toggleButton2.setBackgroundResource(R.drawable.heart)
+            }
+        }
+
+        visitedL.setOnCheckedChangeListener{_, isChecked ->
+            ringfort.visited = isChecked
+        }
+
+
         visitedDateL.setOnClickListener {
             val datepicker = DatePickerDialog(
                 this, R.style.DatePickerDialogTheme,
@@ -69,9 +82,21 @@ class RingfortView : BaseView(), AnkoLogger {
     override fun showRingfort(ringfort: RingfortModel) {
         ringfortName.setText(ringfort.name)
         ringfortDescription.setText(ringfort.description)
-        visitedL.isChecked
+
+        visitedL.isChecked = ringfort.visited == true
+
         visitedDateL.setText(ringfort.visitedDate)
-//        ringfortImage.setImageBitmap(readImageFromPath(this, ringfort.image))
+
+        if(ringfort.favourite == true){
+            toggleButton2.setBackgroundResource(R.drawable.favourite)
+            toggleButton2.isChecked = true
+        }else if(ringfort.favourite == false){
+            toggleButton2.setBackgroundResource(R.drawable.heart)
+            toggleButton2.isChecked = false
+        }
+
+        ratingBar.setRating(ringfort.rating)
+
         Glide.with(this).load(ringfort.image).into(ringfortImage);
 
         if (ringfort.image != null) {
@@ -102,14 +127,16 @@ class RingfortView : BaseView(), AnkoLogger {
                     if (ringfortName.text.toString().isEmpty()) {
                     toast(R.string.enter_ringfort_details)
                 } else {
-                    presenter.doAddOrSave(ringfortName.text.toString(), ringfortDescription.text.toString(), visitedDateL.text.toString(), visitedL.isChecked )
+                    presenter.doAddOrSave(ringfortName.text.toString(), ringfortDescription.text.toString(), visitedDateL.text.toString(), visitedL.isChecked, toggleButton2.isChecked, ratingBar.getRating() )
                     info("Ringfort created with the details - " +
                          "\nID: ${presenter.ringfort.id}" +
                          "\nName: ${presenter.ringfort.name}" +
                          "\nDesc: ${presenter.ringfort.description}" +
-                         "\n Lat: ${location.lat}, Long: ${location.lng}" +
+                         "\nLocation: (Lat: ${location.lat}, Lng: ${location.lng})" +
                          "\nVisted: ${ringfort.visited}" +
-                         "\nDate Visited: ${presenter.ringfort.visitedDate}")
+                         "\nDate Visited: ${presenter.ringfort.visitedDate}" +
+                         "\nFavourite: ${presenter.ringfort.favourite}" +
+                        "\nRating: ${presenter.ringfort.rating}")
                 }
             }
             R.id.home -> {
