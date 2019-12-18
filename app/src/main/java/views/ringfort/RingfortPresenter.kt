@@ -49,8 +49,16 @@ class RingfortPresenter (view: BaseView) : BasePresenter(view) {
 
     @SuppressLint("MissingPermission")
     fun doSetCurrentLocation() {
-        locationService.lastLocation.addOnSuccessListener {
-            locationUpdate(Location(it.latitude, it.longitude))
+        var locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult?) {
+                if (locationResult != null && locationResult.locations != null) {
+                    val l = locationResult.locations.last()
+                    locationUpdate(Location(l.latitude, l.longitude))
+                }
+            }
+        }
+        if (!edit) {
+            locationService.requestLocationUpdates(locationRequest, locationCallback, null)
         }
     }
 

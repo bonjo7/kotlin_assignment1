@@ -11,12 +11,9 @@ import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.activity_ringfort_maps.*
 import views.BaseView
 
-
 class EditLocationView : BaseView(),  GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
 
     lateinit var presenter: EditLocationPresenter
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

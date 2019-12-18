@@ -34,7 +34,7 @@ class RingfortMapPresenter(view: BaseView) : BasePresenter(view) {
         }
     }
 
-    fun loadPlacemarks() {
+    fun loadRingforts() {
         doAsync {
             val ringforts = app.ringforts.findAll()
             uiThread {

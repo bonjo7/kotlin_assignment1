@@ -43,8 +43,8 @@ class RingfortJSONStore : RingfortStore, AnkoLogger {
     }
 
     override fun findById(id:Long) : RingfortModel? {
-        val foundPlacemark: RingfortModel? = ringforts.find { it.id == id }
-        return foundPlacemark
+        val foundRingfort: RingfortModel? = ringforts.find { it.id == id }
+        return foundRingfort
     }
 
 //    override fun findUserRingforts(userId: Long): List<RingfortModel> {
