@@ -1,10 +1,8 @@
 package views
 
-import activities.Settings
+import views.settings.Settings
 import android.content.Intent
-import android.media.audiofx.BassBoost
 import android.os.Parcelable
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import models.Location
 import models.RingfortModel

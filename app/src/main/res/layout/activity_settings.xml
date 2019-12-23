@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="activities.Settings">
+    android:background="@color/offwhite"
+    tools:context="views.settings.Settings">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimary"
         android:fitsSystemWindows="true"
         app:elevation="0dip"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -46,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_margin="8dp"
-                android:background="@color/offwhite"
+                android:background="@color/colorAccent"
                 android:inputType="text"
                 android:maxLength="25"
                 android:maxLines="1"
@@ -59,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_margin="8dp"
-                android:background="@color/offwhite"
+                android:background="@color/colorAccent"
                 android:inputType="textPassword"
                 android:maxLength="25"
                 android:maxLines="1"
@@ -102,9 +103,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_alignBottom="@id/recyclerView"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimary"
         app:itemIconTint="@color/colorAccent"
         app:itemTextColor="@color/colorAccent"
-        app:menu="@menu/bottom_nav_menu" />
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

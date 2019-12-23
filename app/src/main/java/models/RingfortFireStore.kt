@@ -58,6 +58,12 @@ class RingfortFireStore(val context: Context) : RingfortStore, AnkoLogger {
 
     override fun delete(ringfort: RingfortModel) {
         db.child("users").child(userId).child("ringforts").child(ringfort.fbId).removeValue()
+//        if ((ringfort.image.length) > 0 && (ringfort.image[0] != 'h')) {
+//            val fileName = File(ringfort.image)
+//            val imageName = fileName.getName()
+//            var imageRef = st.child(userId + '/' + imageName)
+//            imageRef.delete()
+//        }
         ringforts.remove(ringfort)
     }
 

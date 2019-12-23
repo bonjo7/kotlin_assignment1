@@ -1,6 +1,7 @@
 package main
 
 import android.app.Application
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import models.*
 import models.json.RingfortJSONStore
 import models.room.RingfortStoreRoom
@@ -14,6 +15,8 @@ class MainApp : Application(), AnkoLogger {
     lateinit var ringforts : RingfortStore
 
     lateinit var currentUser: UserModel
+
+//    lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate() {
         super.onCreate()

@@ -56,7 +56,35 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"/>
-    <TextView
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Or sign in with your Google account"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:textColor="@color/colorAccent"-->
+<!--        android:textSize="15sp"-->
+<!--        android:textStyle="bold" />-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/googleSignInButton"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/emailPasswordButtons"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingLeft="16dp"-->
+<!--        android:paddingRight="16dp"-->
+<!--        android:layout_marginTop="10dp">-->
+
+<!--        <com.google.android.gms.common.SignInButton-->
+<!--            android:id="@+id/sign_in_button"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1" />-->
+
+<!--    </LinearLayout>-->
+
+        <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:id="@+id/tvreg"

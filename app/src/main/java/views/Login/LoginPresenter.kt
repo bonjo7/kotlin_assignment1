@@ -1,5 +1,6 @@
 package views.Login
 
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import models.RingfortFireStore
 import org.jetbrains.anko.toast
@@ -37,6 +38,11 @@ class LoginPresenter (view: BaseView) : BasePresenter(view) {
             }
         }
     }
+
+//    fun googleSignIn() {
+//        app.googleSignInClient.signInIntent
+//        view?.navigateTo(VIEW.LIST)
+//    }
 
     fun doSignUp(email: String, password: String) {
         view?.showProgress()

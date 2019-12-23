@@ -1,10 +1,14 @@
 package views.ringfortlist
 
+import android.view.MenuItem
+import android.widget.Toast
+import com.example.bernardthompson_assignment1.R
 import com.google.firebase.auth.FirebaseAuth
 import main.MainApp
 import models.RingfortModel
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.uiThread
 import views.BasePresenter
 import views.BaseView
@@ -41,5 +45,10 @@ class RingfortListPresenter(view: BaseView) : BasePresenter(view) {
 
     fun doSettings() {
         view?.navigateTo((VIEW.SETTINGS))
+    }
+
+    fun loadRingfortsSearch(containingString: String)
+    {
+            view?.showRingforts(app.ringforts.findAll().filter { it.name.toLowerCase().contains(containingString.toLowerCase()) })
     }
 }

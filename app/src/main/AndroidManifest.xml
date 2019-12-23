@@ -56,7 +56,7 @@
 
         <activity android:name="views.Login.RegisterView" />
 
-        <activity android:name="activities.Settings" />
+        <activity android:name="views.settings.Settings" />
 
 
         <meta-data

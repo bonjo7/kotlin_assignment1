@@ -4,8 +4,15 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
+    <item
+        android:id="@+id/undo_fav"
+        android:title="UnShow Favourites"
+        app:showAsAction="always"
+        android:icon="@drawable/heart_border_white"/>
+
 <!--    <item-->
-<!--        android:id="@+id/logout"-->
-<!--        android:title="Logout"-->
-<!--        app:showAsAction="never" />-->
+<!--        android:id="@+id/show_fav"-->
+<!--        android:title="Show Favourites"-->
+<!--        app:showAsAction="always"-->
+<!--        android:icon="@drawable/favourite"/>-->
     </menu>
