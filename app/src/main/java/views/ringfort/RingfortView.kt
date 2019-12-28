@@ -56,7 +56,7 @@ class RingfortView : BaseView(), AnkoLogger {
 
         toggleButton2.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
-                    toggleButton2.setBackgroundResource(R.drawable.favourite)
+                toggleButton2.setBackgroundResource(R.drawable.favourite)
             }else {
                 toggleButton2.setBackgroundResource(R.drawable.heart)
             }

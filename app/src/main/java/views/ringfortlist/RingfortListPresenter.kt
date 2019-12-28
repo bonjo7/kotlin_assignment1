@@ -29,13 +29,20 @@ class RingfortListPresenter(view: BaseView) : BasePresenter(view) {
         view?.navigateTo(VIEW.MAPS)
     }
 
-    fun loadRingforts() {
+    fun loadRingforts(fav: Boolean) {
         doAsync {
-        val ringforts = app.ringforts.findAll()
+//        val ringforts = app.ringforts.findAll()
+            if(!fav){
             uiThread {
-                view?.showRingforts(ringforts)
+                view?.showRingforts(app.ringforts.findAll())
+            }}
+            else{
+                uiThread {
+                    view?.showRingforts(app.ringforts.findAll().filter { it.favourite })
+                }
             }
         }
+
     }
 
     fun doLogout() {

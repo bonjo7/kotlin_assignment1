@@ -35,7 +35,7 @@ class RingfortListView : BaseView(), RingfortListener {
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        presenter.loadRingforts()
+        presenter.loadRingforts(switch2.isChecked)
 
 
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -58,15 +58,28 @@ class RingfortListView : BaseView(), RingfortListener {
 
         })
 
+        switch2.setOnClickListener {
+            if(switch2.isChecked){
+                switch2.setThumbResource(R.drawable.favourite)
+                presenter.loadRingforts(fav = true)
+                recyclerView.adapter?.notifyDataSetChanged()
+            }
+            else{
+                switch2.setThumbResource(R.drawable.heart_border_white)
+                presenter.loadRingforts(fav = false)
+                recyclerView.adapter?.notifyDataSetChanged()
 
-   }
-
-    fun doOnOptionsItemSelected(item: MenuItem?) {
-        when (item?.itemId) {
-            R.id.undo_fav -> toast("ToDo")
+            }
 
         }
-    }
+   }
+
+//    fun doOnOptionsItemSelected(item: MenuItem?) {
+//        when (item?.itemId) {
+//            R.id.undo_fav -> toast("ToDo")
+//
+//        }
+//    }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
@@ -77,13 +90,6 @@ class RingfortListView : BaseView(), RingfortListener {
         } else if (newConfig.orientation === Configuration.ORIENTATION_PORTRAIT) {
             Toast.makeText(this, "Changed to portrait view", Toast.LENGTH_SHORT).show()
         }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item != null) {
-            doOnOptionsItemSelected(item)
-        }
-        return super.onOptionsItemSelected(item)
     }
 
      override fun showRingforts(ringforts: List<RingfortModel>) {
@@ -104,7 +110,7 @@ class RingfortListView : BaseView(), RingfortListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
-        presenter.loadRingforts()
+        presenter.loadRingforts(switch2.isChecked)
         super.onActivityResult(requestCode, resultCode, data)
     }
 
