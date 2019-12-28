@@ -1,9 +1,11 @@
 package views.ringfortlist
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bernardthompson_assignment1.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -22,6 +24,8 @@ class RingfortListView : BaseView(), RingfortListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ringfort_list)
         super.init(toolbar, true)
+
+
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
 
@@ -53,12 +57,25 @@ class RingfortListView : BaseView(), RingfortListener {
             }
 
         })
+
+
    }
 
     fun doOnOptionsItemSelected(item: MenuItem?) {
         when (item?.itemId) {
             R.id.undo_fav -> toast("ToDo")
 
+        }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+
+        // Checks the orientation of the screen
+        if (newConfig.orientation === Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "Chnaged to landscape view", Toast.LENGTH_SHORT).show()
+        } else if (newConfig.orientation === Configuration.ORIENTATION_PORTRAIT) {
+            Toast.makeText(this, "Changed to portrait view", Toast.LENGTH_SHORT).show()
         }
     }
 
