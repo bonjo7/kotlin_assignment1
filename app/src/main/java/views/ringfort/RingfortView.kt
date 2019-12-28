@@ -62,6 +62,21 @@ class RingfortView : BaseView(), AnkoLogger {
             }
         }
 
+        share.setOnClickListener{
+//            val location = "https://www.google.com/maps/@${ringfort.l},-7.0800065,13z"
+            val details = "Checkout this Ringfort" +
+                    "\nName: ${presenter.ringfort.name}" +
+                    "\nDescription: ${presenter.ringfort.description}" +
+                    "\nRating: ${presenter.ringfort.rating}" +
+                    "\nLocation: ${presenter.ringfort.location}"
+
+            val shareIntent = Intent()
+            shareIntent.action = Intent.ACTION_SEND
+            shareIntent.type="text/plain"
+            shareIntent.putExtra(Intent.EXTRA_TEXT, details);
+            startActivity(Intent.createChooser(shareIntent,"Share via"))
+        }
+
         visitedL.setOnCheckedChangeListener{_, isChecked ->
             ringfort.visited = isChecked
         }
@@ -133,7 +148,7 @@ class RingfortView : BaseView(), AnkoLogger {
                          "\nName: ${presenter.ringfort.name}" +
                          "\nDesc: ${presenter.ringfort.description}" +
                          "\nLocation: (Lat: ${location.lat}, Lng: ${location.lng})" +
-                         "\nVisted: ${ringfort.visited}" +
+                         "\nVisted: ${presenter.ringfort.visited}" +
                          "\nDate Visited: ${presenter.ringfort.visitedDate}" +
                          "\nFavourite: ${presenter.ringfort.favourite}" +
                         "\nRating: ${presenter.ringfort.rating}")

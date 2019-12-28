@@ -58,6 +58,9 @@ class RingfortListView : BaseView(), RingfortListener {
 
         })
 
+        /*
+        Change the toggle icon and set fav boolean when switch button is selected
+         */
         switch2.setOnClickListener {
             if(switch2.isChecked){
                 switch2.setThumbResource(R.drawable.favourite)
@@ -84,7 +87,9 @@ class RingfortListView : BaseView(), RingfortListener {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
 
-        // Checks the orientation of the screen
+        /*
+        Check the orientation and inform user that is has been changed
+         */
         if (newConfig.orientation === Configuration.ORIENTATION_LANDSCAPE) {
             Toast.makeText(this, "Chnaged to landscape view", Toast.LENGTH_SHORT).show()
         } else if (newConfig.orientation === Configuration.ORIENTATION_PORTRAIT) {
@@ -92,6 +97,9 @@ class RingfortListView : BaseView(), RingfortListener {
         }
     }
 
+    /*
+    Display ringforts
+     */
      override fun showRingforts(ringforts: List<RingfortModel>) {
         recyclerView.adapter = RingfortAdapter(ringforts, this)
         recyclerView.adapter?.notifyDataSetChanged()
@@ -104,6 +112,9 @@ class RingfortListView : BaseView(), RingfortListener {
 
     }
 
+    /*
+    When ringfort clicked invoke the edit ringfort method
+     */
     override fun onRingfortClick(ringfort: RingfortModel) {
         presenter.doEditRingfort(ringfort)
     }
@@ -114,6 +125,9 @@ class RingfortListView : BaseView(), RingfortListener {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    /*
+    Bottom navigation
+     */
         private val bottomListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.logoutBottom -> presenter.doLogout()

@@ -29,6 +29,11 @@ class RingfortListPresenter(view: BaseView) : BasePresenter(view) {
         view?.navigateTo(VIEW.MAPS)
     }
 
+    /*
+    Load ringforts based on what the switch icon being selected or not
+    if true show ringforts which are favourites
+    If false show all ringforts
+     */
     fun loadRingforts(fav: Boolean) {
         doAsync {
 //        val ringforts = app.ringforts.findAll()
@@ -36,7 +41,7 @@ class RingfortListPresenter(view: BaseView) : BasePresenter(view) {
             uiThread {
                 view?.showRingforts(app.ringforts.findAll())
             }}
-            else{
+            else if(fav){
                 uiThread {
                     view?.showRingforts(app.ringforts.findAll().filter { it.favourite })
                 }
@@ -54,6 +59,9 @@ class RingfortListPresenter(view: BaseView) : BasePresenter(view) {
         view?.navigateTo((VIEW.SETTINGS))
     }
 
+    /*
+    Load ringforts based on the users search criteria
+     */
     fun loadRingfortsSearch(containingString: String)
     {
             view?.showRingforts(app.ringforts.findAll().filter { it.name.toLowerCase().contains(containingString.toLowerCase()) })
