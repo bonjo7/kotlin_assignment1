@@ -5,6 +5,7 @@ import helpers.showImagePicker
 import models.Location
 import models.RingfortModel
 import android.content.Intent
+import androidx.core.content.ContextCompat.startActivity
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
@@ -161,6 +162,20 @@ class RingfortPresenter (view: BaseView) : BasePresenter(view) {
         if (!edit) {
             locationService.requestLocationUpdates(locationRequest, locationCallback, null)
         }
+    }
+
+    fun shareRingfort(){
+        val details = "Checkout this Ringfort" +
+                "\nName: ${ringfort.name}" +
+                "\nDescription: ${ringfort.description}" +
+                "\nRating: ${ringfort.rating}" +
+                "\nLocation: ${ringfort.location}"
+
+        val shareIntent = Intent()
+        shareIntent.action = Intent.ACTION_SEND
+        shareIntent.type="text/plain"
+        shareIntent.putExtra(Intent.EXTRA_TEXT, details);
+        view!!.startActivity(Intent.createChooser(shareIntent,"Share via"))
     }
 
     }
