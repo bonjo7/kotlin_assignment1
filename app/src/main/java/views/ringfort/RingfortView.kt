@@ -144,6 +144,7 @@ class RingfortView : BaseView(), AnkoLogger {
                 }
             }
             R.id.home -> {
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 onBackPressed()
                 true
             }

@@ -60,6 +60,7 @@ class Settings : AppCompatActivity(), AnkoLogger {
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         startActivity(Intent(this@Settings, RingfortListView::class.java))
         return true
     }

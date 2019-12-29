@@ -116,6 +116,7 @@ class RingfortListView : BaseView(), RingfortListener {
     When ringfort clicked invoke the edit ringfort method
      */
     override fun onRingfortClick(ringfort: RingfortModel) {
+
         presenter.doEditRingfort(ringfort)
     }
 
