@@ -53,7 +53,14 @@ class Settings : AppCompatActivity(), AnkoLogger {
 
             }
 
-        size.setText("Number of Ringforts: ${RingfortsSize} in total")
+        var allRingforts = app.ringforts.findAll().size
+        progressBar2.max = allRingforts
+        var visitedRingforts = app.ringforts.findAll().filter { it.visited }.size
+
+        progressBar2.progress = visitedRingforts
+
+        size.setText("Number of Ringforts: ${RingfortsSize} in total. " +
+                "\nVisited Ringforts: ${visitedRingforts}")
 
 
     }

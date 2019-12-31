@@ -40,8 +40,8 @@ class LoginView : BaseView() {
 
         tvreg.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                startActivity(Intent(this@LoginView, RegisterView::class.java))
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+                startActivity(Intent(this@LoginView, RegisterView::class.java ))
                 info("Textview tvreg clicked\nRedirecting to register page")
             }
         })

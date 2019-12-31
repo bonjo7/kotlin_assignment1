@@ -22,7 +22,9 @@ uncharted
 - Sign up or login with [Firebase](https://firebase.google.com/) Authentication
 - Edit user details
 - Add/Edit a Ringfort (Name, description, image, location, rating, favourite)
+- Delete Ringfort
 - List all Ringforts
+- View Stats, number of Ringforts and number of Ringforts visited
 - Filter ringfort list based on name search
 - List only favourite Ringforts by toogling a favourite button
 - Display a map with the location of all Ringforts
@@ -167,3 +169,4 @@ Screenshots of app's views with brief statements of their use
 - Saving ringfort, ringfort currently save's but does not redirect to list activity.
 - User only allowed to upload one image instead of four.
 - Have not implemented the ability to take a photo as of yet
+- UI for maps in landscape mode not displaying correctly

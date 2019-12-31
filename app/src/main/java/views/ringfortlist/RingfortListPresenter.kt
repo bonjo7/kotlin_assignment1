@@ -21,6 +21,7 @@ class RingfortListPresenter(view: BaseView) : BasePresenter(view) {
         view?.navigateTo(VIEW.RINGFORT)
     }
 
+
     fun doEditRingfort(ringfort: RingfortModel) {
         view?.navigateTo(VIEW.RINGFORT, 0, "ringfort_edit", ringfort)
     }
