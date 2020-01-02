@@ -12,6 +12,7 @@ import main.MainApp
 import models.UserModel
 import org.jetbrains.anko.*
 import views.Login.LoginView
+import views.map.RingfortMapView
 import views.ringfort.RingfortView
 import views.ringfortlist.RingfortListView
 
@@ -87,6 +88,10 @@ class Settings : AppCompatActivity(), AnkoLogger {
                 startActivity(Intent(this@Settings, Settings::class.java))
                 return@OnNavigationItemSelectedListener true
 
+            }
+            R.id.item_map -> {
+                startActivity(Intent(this@Settings, RingfortMapView::class.java))
+                return@OnNavigationItemSelectedListener true
             }
 
         }
