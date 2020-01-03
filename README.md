@@ -34,7 +34,7 @@ uncharted
 
 ***
 
-## Run Application.
+## Run Application
 
 Clone the project
 
@@ -55,6 +55,19 @@ Clone the project
 <p align="left">
 <img src="./images/appIcon.png" width="100">
 </p>
+
+### Possible Google maps error
+
+* An error which you may encounter is google maps not displaying. This is due to the application using the wrong SHA1 key when running the applicaiton and attempting to view the map view. In order to chnage the SHA1 key follow the instructions below
+   * Open Android Studio
+   * Open your Project
+   * Click on Gradle (From Right Side Panel, you will see Gradle Bar)
+      * Click on Your Project (Your Project Name form List (root))
+      * Click on Tasks
+      * Click on Android
+   * Double Click on signingReport (You will get SHA1 and MD5 in Run Bar(Sometimes it will be in Gradle Console))
+   * Open `google_maps_api.xml` and on line 7 enter your SHA1 key
+   * Select app module from module selection dropdown to run or debug your application
 
 ***
 
