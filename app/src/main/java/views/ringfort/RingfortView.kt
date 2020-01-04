@@ -75,7 +75,7 @@ class RingfortView : BaseView(), AnkoLogger {
             val datepicker = DatePickerDialog(
                 this, R.style.DatePickerDialogTheme,
                 DatePickerDialog.OnDateSetListener { _, year, month, day ->
-                    visitedDateL.setText("$day - $month - $year")}, year, month, day
+                    visitedDateL.setText("$day - $month - $year")}, year, month +1, day
             )
             datepicker.show()
 
