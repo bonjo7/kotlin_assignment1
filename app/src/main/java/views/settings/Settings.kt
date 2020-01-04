@@ -2,22 +2,18 @@ package views.settings
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.example.bernardthompson_assignment1.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_settings.*
-import main.MainApp
 import models.UserModel
 import org.jetbrains.anko.*
-import views.Login.LoginView
-import views.ringfort.RingfortView
+import views.BaseView
 import views.ringfortlist.RingfortListView
 
-class Settings : AppCompatActivity(), AnkoLogger {
+class Settings : BaseView() {
 
-    lateinit var app: MainApp
+    lateinit var presenter : SettingsPresenter
     var userc = UserModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,12 +24,13 @@ class Settings : AppCompatActivity(), AnkoLogger {
 
         bottomNavigation.setOnNavigationItemSelectedListener(bottomListener)
 
+        presenter = SettingsPresenter(this)
+
         setSupportActionBar(toolbarAdd)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        app = application as MainApp
 
-        var RingfortsSize = app.ringforts.findAll().size
+        var RingfortsSize = presenter.app.ringforts.findAll().size
 
         val user = FirebaseAuth.getInstance().currentUser!!.uid
         if (user != null) {
@@ -53,9 +50,9 @@ class Settings : AppCompatActivity(), AnkoLogger {
 
             }
 
-        var allRingforts = app.ringforts.findAll().size
+        var allRingforts = presenter.app.ringforts.findAll().size
         progressBar2.max = allRingforts
-        var visitedRingforts = app.ringforts.findAll().filter { it.visited }.size
+        var visitedRingforts = presenter.app.ringforts.findAll().filter { it.visited }.size
 
         progressBar2.progress = visitedRingforts
 
@@ -74,19 +71,22 @@ class Settings : AppCompatActivity(), AnkoLogger {
 
     private val bottomListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.logoutBottom -> {
-                startActivity(Intent(this@Settings, LoginView::class.java))
-                return@OnNavigationItemSelectedListener true
-                finish()
+            R.id.logoutBottom ->  {
+                presenter.doLogout()
+                overridePendingTransition(android.R.anim.fade_out, android.R.anim.fade_in)
             }
-            R.id.item_add -> {
-                startActivityForResult<RingfortView>(0)
-                return@OnNavigationItemSelectedListener true
+            R.id.item_add ->{
+                presenter.doAddRingfort()
+                overridePendingTransition(android.R.anim.fade_out, android.R.anim.fade_in)
             }
             R.id.settings_bottom -> {
-                startActivity(Intent(this@Settings, Settings::class.java))
-                return@OnNavigationItemSelectedListener true
 
+                presenter.doSettings()
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
+            }
+            R.id.item_map -> {
+                presenter.doShowRingfortsMap()
+                overridePendingTransition(android.R.anim.slide_out_right, android.R.anim.slide_in_left)
             }
 
         }

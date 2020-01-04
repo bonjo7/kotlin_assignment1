@@ -8,20 +8,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context="views.ringfort.RingfortView">
 
 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:fillViewport="false">
+        android:fillViewport="false"
+        >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/smokeyWhite">
+        android:background="@color/smokeyWhite"
+        >
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -47,16 +50,18 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
 
 
             <EditText
                 android:id="@+id/ringfortName"
                 android:layout_width="384dp"
                 android:layout_height="57dp"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/colorPrimary"
                 android:hint="@string/ringfortName"
                 android:inputType="text"
@@ -140,20 +145,19 @@
 
             <Button
                 android:id="@+id/chooseImage"
-                android:layout_width="385dp"
-                android:layout_height="49dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="5dp"
+                android:layout_width="190dp"
+                android:layout_height="39dp"
+
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="8dp"
                 android:background="@color/colorAccent"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:text="@string/button_addImage"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.562"
+                app:layout_constraintEnd_toStartOf="@+id/takePic"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ringfortImage" />
 
@@ -353,6 +357,20 @@
                 android:text="Share"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/takePic"
+                android:layout_width="190dp"
+                android:layout_height="39dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ringfortImage"
+                android:text="Take Picture"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+
+                android:background="@color/colorAccent"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

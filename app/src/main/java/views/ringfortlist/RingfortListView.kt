@@ -131,10 +131,23 @@ class RingfortListView : BaseView(), RingfortListener {
      */
         private val bottomListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.logoutBottom -> presenter.doLogout()
-            R.id.item_add -> presenter.doAddRingfort()
-            R.id.settings_bottom -> presenter.doSettings()
-            R.id.item_map -> presenter.doShowRingfortsMap()
+            R.id.logoutBottom ->  {
+                presenter.doLogout()
+                overridePendingTransition(android.R.anim.fade_out, android.R.anim.fade_in)
+            }
+            R.id.item_add ->{
+                presenter.doAddRingfort()
+                overridePendingTransition(android.R.anim.fade_out, android.R.anim.fade_in)
+            }
+            R.id.settings_bottom -> {
+
+                presenter.doSettings()
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
+            }
+            R.id.item_map -> {
+                presenter.doShowRingfortsMap()
+                overridePendingTransition(android.R.anim.slide_out_right, android.R.anim.slide_in_left)
+            }
         }
         false
     }
