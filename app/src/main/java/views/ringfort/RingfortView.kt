@@ -8,10 +8,12 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.app.ActivityCompat
+import androidx.core.content.FileProvider
 import com.bumptech.glide.Glide
 import com.example.bernardthompson_assignment1.R
 import com.google.android.gms.maps.GoogleMap
@@ -23,6 +25,9 @@ import models.Location
 import models.RingfortModel
 import org.jetbrains.anko.*
 import views.BaseView
+import java.io.File
+import java.io.IOException
+import java.text.SimpleDateFormat
 import java.util.*
 import java.util.jar.Manifest
 
@@ -40,6 +45,8 @@ class RingfortView : BaseView(), AnkoLogger {
     lateinit var map: GoogleMap
 
     val REQUEST_IMAGE_CAPTURE = 1
+
+    lateinit var currentPhotoPath: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -211,11 +218,43 @@ class RingfortView : BaseView(), AnkoLogger {
     fun takePic() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
             takePictureIntent.resolveActivity(packageManager)?.also {
-                val cameraIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
-                startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE)
+
+                val photoFile: File? = try {
+                    createImageFile()
+
+                } catch (ex: IOException) {
+                    // Error occurred while creating the File
+
+                    null
+                }
+                // Continue only if the File was successfully created
+                photoFile?.also {
+                    val photoURI: Uri = FileProvider.getUriForFile(
+                        this,
+                        "com.example.bernardthompson_assignment1.fileprovider",
+                        it
+                    )
+
+                    val cameraIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
+                    startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE)
+                }
             }
         }
     }
 
+
+     private fun createImageFile(): File {
+            // Create an image file name
+            val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+            val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+            return File.createTempFile(
+                "JPEG_${timeStamp}_", /* prefix */
+                ".jpg", /* suffix */
+                storageDir /* directory */
+            ).apply {
+                // Save a file: path for use with ACTION_VIEW intents
+                currentPhotoPath = absolutePath
+            }
+        }
 
 }
