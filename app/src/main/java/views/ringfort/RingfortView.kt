@@ -1,11 +1,17 @@
 package views.ringfort
 
 import android.app.DatePickerDialog
+import android.content.ContentValues
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
+import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
 import com.example.bernardthompson_assignment1.R
 import com.google.android.gms.maps.GoogleMap
@@ -18,20 +24,22 @@ import models.RingfortModel
 import org.jetbrains.anko.*
 import views.BaseView
 import java.util.*
+import java.util.jar.Manifest
 
 
 class RingfortView : BaseView(), AnkoLogger {
 
-        val calender = Calendar.getInstance()
-        val year = calender.get(Calendar.YEAR)
-        val month = calender.get(Calendar.MONTH)
-        val day = calender.get(Calendar.DAY_OF_MONTH)
+    val calender = Calendar.getInstance()
+    val year = calender.get(Calendar.YEAR)
+    val month = calender.get(Calendar.MONTH)
+    val day = calender.get(Calendar.DAY_OF_MONTH)
 
-//    lateinit var location: Location
     var location = Location()
     lateinit var presenter: RingfortPresenter
     var ringfort = RingfortModel()
     lateinit var map: GoogleMap
+
+    val REQUEST_IMAGE_CAPTURE = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,7 +89,15 @@ class RingfortView : BaseView(), AnkoLogger {
 
         }
 
+        takePic.setOnClickListener {
+            takePic()
+        }
+
+
+
     }
+
+
 
     override fun showRingfort(ringfort: RingfortModel) {
         ringfortName.setText(ringfort.name)
@@ -190,6 +206,15 @@ class RingfortView : BaseView(), AnkoLogger {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         mapView1.onSaveInstanceState(outState)
+    }
+
+    fun takePic() {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            takePictureIntent.resolveActivity(packageManager)?.also {
+                val cameraIntent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
+                startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE)
+            }
+        }
     }
 
 
