@@ -5,7 +5,7 @@ import helpers.showImagePicker
 import models.Location
 import models.RingfortModel
 import android.content.Intent
-import androidx.core.content.ContextCompat.startActivity
+
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
@@ -34,7 +34,7 @@ class RingfortPresenter (view: BaseView) : BasePresenter(view) {
 
     val locationRequest = createDefaultLocationRequest()
 
-
+    val REQUEST_IMAGE_CAPTURE = 1
 
     init {
         if (view.intent.hasExtra("ringfort_edit")) {
@@ -178,5 +178,11 @@ class RingfortPresenter (view: BaseView) : BasePresenter(view) {
         view!!.startActivity(Intent.createChooser(shareIntent,"Share via"))
     }
 
-    }
+
+
+
+
+
+
+}
 
