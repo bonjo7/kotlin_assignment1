@@ -145,9 +145,9 @@
 
             <Button
                 android:id="@+id/chooseImage"
-                android:layout_width="385dp"
-                android:layout_height="49dp"
-                android:layout_gravity="center"
+                android:layout_width="190dp"
+                android:layout_height="39dp"
+
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
@@ -157,8 +157,7 @@
                 android:text="@string/button_addImage"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.562"
+                app:layout_constraintEnd_toStartOf="@+id/takePic"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ringfortImage" />
 
@@ -358,6 +357,20 @@
                 android:text="Share"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/takePic"
+                android:layout_width="190dp"
+                android:layout_height="39dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ringfortImage"
+                android:text="Take Picture"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+
+                android:background="@color/colorAccent"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
